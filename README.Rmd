@@ -7,10 +7,3 @@
 # kwb.lca
 Helper functions for data aggregation and visualisation of UMBERTO (see:
 [https://www.ifu.com/umberto/](https://www.ifu.com/umberto/)) model output.
-
-## Documentation
-
-Release: [https://kwb-r.github.io/kwb.lca](https://kwb-r.github.io/kwb.lca) 
-
-Development version: [https://kwb-r.github.io/kwb.lca/dev](https://kwb-r.github.io/kwb.lca/dev) 
-
