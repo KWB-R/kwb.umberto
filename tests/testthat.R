@@ -1,4 +1,4 @@
 library(testthat)
-library(kwb.lca)
+library(kwb.kwb.umberto)
 
-test_check("kwb.lca")
+test_check("kwb.umberto")

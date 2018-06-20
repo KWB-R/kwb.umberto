@@ -5,7 +5,7 @@
 test_that("import_rawdata() works", {
 
   expect_error(
-    kwb.lca:::import_rawdata()
+    kwb.umberto:::import_rawdata()
     # argument "csv_dir" is missing, with no default
   )
 

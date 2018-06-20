@@ -5,7 +5,7 @@
 test_that("write_xlsx() works", {
 
   expect_error(
-    kwb.lca:::write_xlsx()
+    kwb.umberto:::write_xlsx()
     # argument "data_pivot_list" is missing, with no default
   )
 

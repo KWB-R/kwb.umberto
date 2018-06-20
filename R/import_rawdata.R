@@ -7,10 +7,10 @@
 #' @importFrom janitor clean_names
 #' @export
 #' @examples 
-#' zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.lca")
+#' zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.umberto")
 #' temp <- file.path(tempdir(), "Beispiel_Auswertung")
 #' unzip(zipfile, exdir = temp)
-#' rawdata <- kwb.lca::import_rawdata(csv_dir = temp)
+#' rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
 #' head(rawdata)
 import_rawdata <- function(csv_dir) {
   

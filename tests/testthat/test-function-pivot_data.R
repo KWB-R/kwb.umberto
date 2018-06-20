@@ -5,7 +5,7 @@
 test_that("pivot_data() works", {
 
   expect_error(
-    kwb.lca:::pivot_data()
+    kwb.umberto:::pivot_data()
     # argument "rawdata_grouped" is missing, with no default
   )
 

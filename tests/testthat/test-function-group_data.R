@@ -5,7 +5,7 @@
 test_that("group_data() works", {
 
   expect_error(
-    kwb.lca:::group_data()
+    kwb.umberto:::group_data()
     # argument "raw_data" is missing, with no default
   )
 

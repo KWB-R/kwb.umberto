@@ -5,7 +5,7 @@
 test_that("plot_results() works", {
 
   expect_error(
-    kwb.lca:::plot_results()
+    kwb.umberto:::plot_results()
     # argument "grouped_data" is missing, with no default
   )
 

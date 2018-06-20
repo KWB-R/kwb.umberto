@@ -22,10 +22,10 @@ aggregated data according
 Group data
 }
 \examples{
-zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.lca")
+zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.umberto")
 temp <- file.path(tempdir(), "Beispiel_Auswertung")
 unzip(zipfile, exdir = temp)
-rawdata <- kwb.lca::import_rawdata(csv_dir = temp)
-data_grouped <- kwb.lca::group_data(rawdata)
+rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
+data_grouped <- kwb.umberto::group_data(rawdata)
 head(data_grouped)
 }

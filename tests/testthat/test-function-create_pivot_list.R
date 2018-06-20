@@ -5,7 +5,7 @@
 test_that("create_pivot_list() works", {
 
   expect_error(
-    kwb.lca:::create_pivot_list()
+    kwb.umberto:::create_pivot_list()
     # argument "pivot_data" is missing, with no default
   )
 

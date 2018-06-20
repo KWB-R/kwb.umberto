@@ -16,34 +16,34 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Install R packages
+# 1 Install R packages
 ```{r, eval = FALSE}
 installed_packages <- rownames(installed.packages())
 
 if(!"devtools" %in% installed_packages) {
   install.packages("devtools", repos = "https://cloud.r-project.org")
 }
-if(!"kwb.lca" %in% installed_packages) {
-  devtools::install_github("KWB-R/kwb.lca")
+if(!"kwb.umberto" %in% installed_packages) {
+  devtools::install_github("KWB-R/kwb.umberto")
 }
 ```
 
-# Load the R package kwb.lca
+# 2 Load the R package kwb.umberto
 ```{r, fig.show='hold'}
-library(kwb.lca)
+library(kwb.umberto)
 ```
 
-# Import data   
+# 3 Import data   
 
-## Directory with example .csv files 
+## 3.1 Directory with example .csv files 
 
 The example .csv files (in German format, i.e. decimals are indicated with `,` 
 and `;` is used as field separator) are the Umberto model output files, which 
 were stored in one zip file `Beispiel_Auswertung.zip` and attached to the R
-package `kwb.lca` as shown below:
+package `kwb.umberto` as shown below:
 
 ```{r}
-zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.lca")
+zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.umberto")
 
 temp <- file.path(tempdir(), "Beispiel_Auswertung")
 
@@ -52,14 +52,14 @@ unzip(zipfile, exdir = temp)
 dir(temp, pattern = ".csv")
 ```
 
-## Getting the data into R 
+## 3.2 Getting the data into R 
 
-Using the function `kwb.lca::import_rawdata()` and specifying the parameter 
-(here: `csv_dir` =  `r temp`) imports the model results from all four .csv files 
-that are located in the folder `r temp`.  
+Using the function `kwb.umberto::import_rawdata()` and specifying the parameter 
+`csv_dir` =  `temp`) imports the model results from all four .csv files 
+that are located in the folder `temp`.  
 
 ```{r}
-rawdata <- kwb.lca::import_rawdata(csv_dir = temp)
+rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
 ```
 
 To access the structure of the imported data one can run the following command: 
@@ -68,30 +68,30 @@ To access the structure of the imported data one can run the following command:
 head(rawdata)
 ```
 
-# Data aggregation
+# 3.3 Data aggregation
 
 Once the data is imported into R, it can be aggregated as shown in the subsequent
 subchapters.
 
-## Grouping
+## 3.3.1 Grouping
 
 ```{r}
-data_grouped <- kwb.lca::group_data(rawdata)
+data_grouped <- kwb.umberto::group_data(rawdata)
 head(data_grouped)
 ```
 
-## Making pivot data
+## 3.3.2 Making pivot data
 ```{r}
-data_pivot <- kwb.lca::pivot_data(data_grouped)
+data_pivot <- kwb.umberto::pivot_data(data_grouped)
 head(data_pivot)
 ```
 
 ```{r}
-data_pivot_list <- kwb.lca::create_pivot_list(data_pivot)
+data_pivot_list <- kwb.umberto::create_pivot_list(data_pivot)
 head(data_pivot)
 ```
 
-# Data export
+# 4 Data export
 
 Finally the resulting data can be exported to an EXCEL spreatsheet. For each 
 `lci_method` available in the imported dataset a sheet named `lci_method_1` to 
@@ -108,14 +108,14 @@ write_xlsx(data_pivot_list,
            path = export_path)
 ```           
 
-# Data visualisation
+# 5 Data visualisation
 
 In addition a simple visualisation of the imported and grouped data can 
-be performed by calling the function `kwb.lca::plot_results()` as shown below:
+be performed by calling the function `kwb.umberto::plot_results()` as shown below:
 
 ```{r}
-rawdata <- kwb.lca::import_rawdata(csv_dir = temp)
-data_grouped <- kwb.lca::group_data(rawdata)
-kwb.lca::plot_results(grouped_data = data_grouped)
+rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
+data_grouped <- kwb.umberto::group_data(rawdata)
+kwb.umberto::plot_results(grouped_data = data_grouped)
 ```
 

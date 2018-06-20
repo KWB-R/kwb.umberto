@@ -11,12 +11,12 @@
 #' @return simple plots for all differn
 #' @export
 #' @examples
-#' zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.lca")
+#' zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.umberto")
 #' temp <- file.path(tempdir(), "Beispiel_Auswertung")
 #' unzip(zipfile, exdir = temp)
-#' rawdata <- kwb.lca::import_rawdata(csv_dir = temp)
-#' data_grouped <- kwb.lca::group_data(rawdata)
-#' kwb.lca::plot_results(grouped_data = data_grouped)
+#' rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
+#' data_grouped <- kwb.umberto::group_data(rawdata)
+#' kwb.umberto::plot_results(grouped_data = data_grouped)
   
 plot_results <- function(grouped_data, 
                          x_col = "model",

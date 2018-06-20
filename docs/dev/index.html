@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>R package supporting UMERTO LCA at KWB • kwb.lca</title>
+<title>R package supporting UMERTO LCA at KWB • kwb.umberto</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="R package supporting UMERTO LCA at KWB">
-<meta property="og:description" content="Helper functions for data aggregation and visualisation of UMBERTO
-                                       (https://www.ifu.com/umberto/) model output.">
+<meta property="og:description" content="Helper functions for data import, aggregation and
+            visualisation of UMBERTO (https://www.ifu.com/umberto/) model output.">
 <meta name="twitter:card" content="summary">
 <meta name="robots" content="noindex">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -30,7 +30,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">kwb.lca</a>
+        <a class="navbar-link" href="index.html">kwb.umberto</a>
         <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development package">0.1.0.9000</span>
       </span>
     </div>
@@ -61,7 +61,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/KWB-R/kwb.lca">
+  <a href="https://github.com/KWB-R/kwb.umberto">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -82,20 +82,16 @@
     
     
 
-<div id="kwb-lca" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#kwb-lca" class="anchor"></a>kwb.lca</h1></div>
-<p>Helper functions for data aggregation and visualisation of UMBERTO (see: <a href="https://www.ifu.com/umberto/" class="uri">https://www.ifu.com/umberto/</a>) model output.</p>
-</div>
+<p>Helper functions for data import, aggregation and visualisation of UMBERTO (see: <a href="https://www.ifu.com/umberto/" class="uri">https://www.ifu.com/umberto/</a>) model output.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/KWB-R/kwb.lca">https://​github.com/​KWB-R/​kwb.lca</a>
+<li>Browse source code at <br><a href="https://github.com/KWB-R/kwb.umberto">https://​github.com/​KWB-R/​kwb.umberto</a>
 </li>
-<li>Report a bug at <br><a href="https:/github.com/KWB-R/kwb.lca/issues">https:/​github.com/​KWB-R/​kwb.lca/​issues</a>
+<li>Report a bug at <br><a href="https:/github.com/KWB-R/kwb.umberto/issues">https:/​github.com/​KWB-R/​kwb.umberto/​issues</a>
 </li>
 </ul>
 </div>
@@ -118,10 +114,11 @@
       <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://ci.appveyor.com/project/KWB-R/kwb.lca/branch/master"><embed src="https://ci.appveyor.com/api/projects/status/github/KWB-R/kwb.lca?branch=master&amp;svg=true"></embed></a></li>
-<li><a href="https://travis-ci.org/KWB-R/kwb.lca"><img src="https://travis-ci.org/KWB-R/kwb.lca.svg?branch=master" alt="Build Status"></a></li>
-<li><a href="https://codecov.io/github/KWB-R/kwb.lca"><img src="https://codecov.io/github/KWB-R/kwb.lca/branch/master/graphs/badge.svg" alt="codecov"></a></li>
+<li><a href="https://ci.appveyor.com/project/KWB-R/kwb-umberto/branch/master"><img src="https://ci.appveyor.com/api/projects/status/57kw4tlion72ag3a/branch/master?svg=true" alt="AppVeyor build status"></a></li>
+<li><a href="https://travis-ci.org/KWB-R/kwb.umberto"><img src="https://travis-ci.org/KWB-R/kwb.umberto.svg?branch=master" alt="Build Status"></a></li>
+<li><a href="https://codecov.io/github/KWB-R/kwb.umberto"><img src="https://codecov.io/github/KWB-R/kwb.umberto/branch/master/graphs/badge.svg" alt="codecov"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></li>
+<li><a href=""><embed src="https://www.r-pkg.org/badges/version/kwb.umberto"></embed></a></li>
 </ul>
 </div>
 </div>

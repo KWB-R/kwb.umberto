@@ -19,12 +19,12 @@ one lci_method
 Create pivot list
 }
 \examples{
-zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.lca")
+zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.umberto")
 temp <- file.path(tempdir(), "Beispiel_Auswertung")
 unzip(zipfile, exdir = temp)
-rawdata <- kwb.lca::import_rawdata(csv_dir = temp)
-data_grouped <- kwb.lca::group_data(rawdata)
-data_pivot <- kwb.lca::pivot_data(data_grouped)
-data_pivot_list <- kwb.lca::create_pivot_list(data_pivot)
+rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
+data_grouped <- kwb.umberto::group_data(rawdata)
+data_pivot <- kwb.umberto::pivot_data(data_grouped)
+data_pivot_list <- kwb.umberto::create_pivot_list(data_pivot)
 head(data_pivot)
 }

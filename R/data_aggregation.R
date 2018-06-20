@@ -10,11 +10,11 @@
 #' @return aggregated data according 
 #' @export
 #' @examples 
-#' zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.lca")
+#' zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.umberto")
 #' temp <- file.path(tempdir(), "Beispiel_Auswertung")
 #' unzip(zipfile, exdir = temp)
-#' rawdata <- kwb.lca::import_rawdata(csv_dir = temp)
-#' data_grouped <- kwb.lca::group_data(rawdata)
+#' rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
+#' data_grouped <- kwb.umberto::group_data(rawdata)
 #' head(data_grouped)
 group_data <- function(raw_data,
                        grouping_paras = c("lci_method", "model", "process", "unit"),
@@ -44,12 +44,12 @@ group_data <- function(raw_data,
 #' @return data.frame with the aggregated results for all different"lci_method"   
 #' @export
 #' @examples 
-#' zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.lca")
+#' zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.umberto")
 #' temp <- file.path(tempdir(), "Beispiel_Auswertung")
 #' unzip(zipfile, exdir = temp)
-#' rawdata <- kwb.lca::import_rawdata(csv_dir = temp)
-#' data_grouped <- kwb.lca::group_data(rawdata)
-#' data_pivot <- kwb.lca::pivot_data(data_grouped)
+#' rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
+#' data_grouped <- kwb.umberto::group_data(rawdata)
+#' data_pivot <- kwb.umberto::pivot_data(data_grouped)
 #' head(data_pivot)
 pivot_data <- function(rawdata_grouped, 
                        cols_to_ignore = "unit",
@@ -71,13 +71,13 @@ pivot_data <- function(rawdata_grouped,
 #' @importFrom dplyr right_join arrange
 #' @export
 #' @examples 
-#' zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.lca")
+#' zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.umberto")
 #' temp <- file.path(tempdir(), "Beispiel_Auswertung")
 #' unzip(zipfile, exdir = temp)
-#' rawdata <- kwb.lca::import_rawdata(csv_dir = temp)
-#' data_grouped <- kwb.lca::group_data(rawdata)
-#' data_pivot <- kwb.lca::pivot_data(data_grouped)
-#' data_pivot_list <- kwb.lca::create_pivot_list(data_pivot)
+#' rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
+#' data_grouped <- kwb.umberto::group_data(rawdata)
+#' data_pivot <- kwb.umberto::pivot_data(data_grouped)
+#' data_pivot_list <- kwb.umberto::create_pivot_list(data_pivot)
 #' head(data_pivot)
 create_pivot_list <- function(pivot_data, 
                               arrange_cols = "process") {
