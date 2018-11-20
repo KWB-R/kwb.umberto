@@ -148,9 +148,11 @@ EXCEL (default: "results.xlsx")</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>umberto7_csv_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/umberto-nxt_v7.1.0.13.503"</span>,
+    <pre class="examples"><div class='input'><span class='no'>zipfile</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/umberto-nxt_v7.1.0.13.503/Beispiel_Auswertung.zip"</span>,
 <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.umberto"</span>)
-<span class='no'>umberto7_rawdata</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/import_rawdata'>import_rawdata</a></span>(<span class='kw'>csv_dir</span> <span class='kw'>=</span> <span class='no'>umberto7_csv_dir</span>)</div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_High_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='no'>umberto7_csv_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"Beispiel_Auswertung"</span>)
+<span class='fu'>unzip</span>(<span class='no'>zipfile</span>, <span class='kw'>exdir</span> <span class='kw'>=</span> <span class='no'>umberto7_csv_dir</span>)
+<span class='no'>umberto7_rawdata</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/import_rawdata'>import_rawdata</a></span>(<span class='kw'>csv_dir</span> <span class='kw'>=</span> <span class='no'>umberto7_csv_dir</span>)</div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpMfWnGI/Beispiel_Auswertung/Ref_High_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  Project = col_character(),</span>
 #&gt; <span class='message'>  Model = col_character(),</span>
@@ -164,7 +166,7 @@ EXCEL (default: "results.xlsx")</p></td>
 #&gt; <span class='message'>  Material = col_character(),</span>
 #&gt; <span class='message'>  Quantity = col_double(),</span>
 #&gt; <span class='message'>  Unit = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_High_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpMfWnGI/Beispiel_Auswertung/Ref_High_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  Project = col_character(),</span>
 #&gt; <span class='message'>  Model = col_character(),</span>
@@ -178,7 +180,7 @@ EXCEL (default: "results.xlsx")</p></td>
 #&gt; <span class='message'>  Material = col_character(),</span>
 #&gt; <span class='message'>  Quantity = col_double(),</span>
 #&gt; <span class='message'>  Unit = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_Low_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpMfWnGI/Beispiel_Auswertung/Ref_Low_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  Project = col_character(),</span>
 #&gt; <span class='message'>  Model = col_character(),</span>
@@ -192,7 +194,7 @@ EXCEL (default: "results.xlsx")</p></td>
 #&gt; <span class='message'>  Material = col_character(),</span>
 #&gt; <span class='message'>  Quantity = col_double(),</span>
 #&gt; <span class='message'>  Unit = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_Low_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpMfWnGI/Beispiel_Auswertung/Ref_Low_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  Project = col_character(),</span>
 #&gt; <span class='message'>  Model = col_character(),</span>

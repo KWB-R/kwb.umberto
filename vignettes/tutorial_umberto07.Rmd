@@ -42,8 +42,10 @@ and `;` is used as field separator) were exported from Umberto NXT (v7.1.0.13.50
 and attached to the R package `kwb.umberto` as shown below:
 
 ```{r}
-temp <- system.file("extdata/umberto-nxt_v7.1.0.13.503", 
-                                 package = "kwb.umberto")
+zipfile <- system.file("extdata/umberto-nxt_v7.1.0.13.503/Beispiel_Auswertung.zip", 
+                       package = "kwb.umberto")
+temp <- file.path(tempdir(), "Beispiel_Auswertung")
+unzip(zipfile, exdir = temp)
 
 dir(temp, pattern = ".csv")
 ```
