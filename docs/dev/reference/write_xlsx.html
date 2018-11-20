@@ -84,9 +84,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/tutorial.html">Tutorial</a>
+      <a href="../articles/tutorial_umberto07.html">Tutorial (Umberto NXT, v7.1.0.13.503)</a>
+    </li>
+    <li>
+      <a href="../articles/tutorial_umberto10.html">Tutorial (Umberto LCA+, v10.0.3.146)</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -142,13 +148,92 @@ EXCEL (default: "results.xlsx")</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>zipfile</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/Beispiel_Auswertung.zip"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.umberto"</span>)
-<span class='no'>temp</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"Beispiel_Auswertung"</span>)
-<span class='fu'>unzip</span>(<span class='no'>zipfile</span>, <span class='kw'>exdir</span> <span class='kw'>=</span> <span class='no'>temp</span>)
-<span class='no'>rawdata</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/import_rawdata'>import_rawdata</a></span>(<span class='kw'>csv_dir</span> <span class='kw'>=</span> <span class='no'>temp</span>)</div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpstrnSQ/Beispiel_Auswertung/Ref_High_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpstrnSQ/Beispiel_Auswertung/Ref_High_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpstrnSQ/Beispiel_Auswertung/Ref_Low_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpstrnSQ/Beispiel_Auswertung/Ref_Low_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='input'><span class='no'>data_grouped</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/group_data'>group_data</a></span>(<span class='no'>rawdata</span>)
-<span class='no'>data_pivot</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/pivot_data'>pivot_data</a></span>(<span class='no'>data_grouped</span>)
-<span class='no'>data_pivot_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/create_pivot_list'>create_pivot_list</a></span>(<span class='no'>data_pivot</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='input'><span class='no'>export_path</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='fu'>getwd</span>(), <span class='st'>"results.xlsx"</span>)
-<span class='fu'>print</span>(<span class='fu'>sprintf</span>(<span class='st'>"Exporting aggregated results to %s"</span>, <span class='no'>export_path</span>))</div><div class='output co'>#&gt; [1] "Exporting aggregated results to C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/docs/dev/reference/results.xlsx"</div><div class='input'><span class='fu'>write_xlsx</span>(<span class='no'>data_pivot_list</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='no'>export_path</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>umberto7_csv_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/umberto-nxt_v7.1.0.13.503"</span>,
+<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.umberto"</span>)
+<span class='no'>umberto7_rawdata</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/import_rawdata'>import_rawdata</a></span>(<span class='kw'>csv_dir</span> <span class='kw'>=</span> <span class='no'>umberto7_csv_dir</span>)</div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_High_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  Project = col_character(),</span>
+#&gt; <span class='message'>  Model = col_character(),</span>
+#&gt; <span class='message'>  Net = col_character(),</span>
+#&gt; <span class='message'>  Timestamp = col_character(),</span>
+#&gt; <span class='message'>  Product = col_character(),</span>
+#&gt; <span class='message'>  `LCI Method` = col_character(),</span>
+#&gt; <span class='message'>  Phase = col_character(),</span>
+#&gt; <span class='message'>  Process = col_character(),</span>
+#&gt; <span class='message'>  `Material Type` = col_character(),</span>
+#&gt; <span class='message'>  Material = col_character(),</span>
+#&gt; <span class='message'>  Quantity = col_double(),</span>
+#&gt; <span class='message'>  Unit = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_High_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  Project = col_character(),</span>
+#&gt; <span class='message'>  Model = col_character(),</span>
+#&gt; <span class='message'>  Net = col_character(),</span>
+#&gt; <span class='message'>  Timestamp = col_character(),</span>
+#&gt; <span class='message'>  Product = col_character(),</span>
+#&gt; <span class='message'>  `LCI Method` = col_character(),</span>
+#&gt; <span class='message'>  Phase = col_character(),</span>
+#&gt; <span class='message'>  Process = col_character(),</span>
+#&gt; <span class='message'>  `Material Type` = col_character(),</span>
+#&gt; <span class='message'>  Material = col_character(),</span>
+#&gt; <span class='message'>  Quantity = col_double(),</span>
+#&gt; <span class='message'>  Unit = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_Low_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  Project = col_character(),</span>
+#&gt; <span class='message'>  Model = col_character(),</span>
+#&gt; <span class='message'>  Net = col_character(),</span>
+#&gt; <span class='message'>  Timestamp = col_character(),</span>
+#&gt; <span class='message'>  Product = col_character(),</span>
+#&gt; <span class='message'>  `LCI Method` = col_character(),</span>
+#&gt; <span class='message'>  Phase = col_character(),</span>
+#&gt; <span class='message'>  Process = col_character(),</span>
+#&gt; <span class='message'>  `Material Type` = col_character(),</span>
+#&gt; <span class='message'>  Material = col_character(),</span>
+#&gt; <span class='message'>  Quantity = col_double(),</span>
+#&gt; <span class='message'>  Unit = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_Low_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  Project = col_character(),</span>
+#&gt; <span class='message'>  Model = col_character(),</span>
+#&gt; <span class='message'>  Net = col_character(),</span>
+#&gt; <span class='message'>  Timestamp = col_character(),</span>
+#&gt; <span class='message'>  Product = col_character(),</span>
+#&gt; <span class='message'>  `LCI Method` = col_character(),</span>
+#&gt; <span class='message'>  Phase = col_character(),</span>
+#&gt; <span class='message'>  Process = col_character(),</span>
+#&gt; <span class='message'>  `Material Type` = col_character(),</span>
+#&gt; <span class='message'>  Material = col_character(),</span>
+#&gt; <span class='message'>  Quantity = col_double(),</span>
+#&gt; <span class='message'>  Unit = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='input'><span class='no'>umberto7_data_grouped</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/group_data'>group_data</a></span>(<span class='no'>umberto7_rawdata</span>)
+<span class='no'>umberto7_data_pivot</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/pivot_data'>pivot_data</a></span>(<span class='no'>umberto7_data_grouped</span>)
+<span class='no'>umberto7_data_pivot_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/create_pivot_list'>create_pivot_list</a></span>(<span class='no'>umberto7_data_pivot</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='input'><span class='no'>export_path</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='fu'>getwd</span>(), <span class='st'>"umberto7_results.xlsx"</span>)
+<span class='fu'>print</span>(<span class='fu'>sprintf</span>(<span class='st'>"Exporting aggregated results to %s"</span>, <span class='no'>export_path</span>))</div><div class='output co'>#&gt; [1] "Exporting aggregated results to C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/docs/dev/reference/umberto7_results.xlsx"</div><div class='input'><span class='fu'>write_xlsx</span>(<span class='no'>umberto7_data_pivot_list</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='no'>export_path</span>)
+
+<span class='no'>umberto10_csv_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/umberto-lca+_v10.1.0.3.146"</span>,
+<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.umberto"</span>)
+<span class='no'>umberto10_rawdata</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/import_rawdata'>import_rawdata</a></span>(<span class='kw'>csv_dir</span> <span class='kw'>=</span> <span class='no'>umberto10_csv_dir</span>)</div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-lca+_v10.1.0.3.146/smartech2_model-v0.1.0_input-v0.3.1.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  Project = col_character(),</span>
+#&gt; <span class='message'>  Model = col_character(),</span>
+#&gt; <span class='message'>  Net = col_character(),</span>
+#&gt; <span class='message'>  Timestamp = col_character(),</span>
+#&gt; <span class='message'>  Product = col_character(),</span>
+#&gt; <span class='message'>  `Product Name` = col_character(),</span>
+#&gt; <span class='message'>  `Product Arrow` = col_character(),</span>
+#&gt; <span class='message'>  `Product Flow Amount` = col_character(),</span>
+#&gt; <span class='message'>  `LCI Method` = col_character(),</span>
+#&gt; <span class='message'>  Phase = col_character(),</span>
+#&gt; <span class='message'>  Process = col_character(),</span>
+#&gt; <span class='message'>  `Material Type` = col_character(),</span>
+#&gt; <span class='message'>  Material = col_character(),</span>
+#&gt; <span class='message'>  Quantity = col_double(),</span>
+#&gt; <span class='message'>  Unit = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='input'><span class='no'>umberto10_data_grouped</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/group_data'>group_data</a></span>(<span class='no'>umberto10_rawdata</span>)
+<span class='no'>umberto10_data_pivot</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/pivot_data'>pivot_data</a></span>(<span class='no'>umberto10_data_grouped</span>)
+<span class='no'>umberto10_data_pivot_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/create_pivot_list'>create_pivot_list</a></span>(<span class='no'>umberto10_data_pivot</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("lci_method", "process")</span></div><div class='input'><span class='no'>export_path</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='fu'>getwd</span>(), <span class='st'>"umberto10_results.xlsx"</span>)
+<span class='fu'>print</span>(<span class='fu'>sprintf</span>(<span class='st'>"Exporting aggregated results to %s"</span>, <span class='no'>export_path</span>))</div><div class='output co'>#&gt; [1] "Exporting aggregated results to C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/docs/dev/reference/umberto10_results.xlsx"</div><div class='input'><span class='fu'>write_xlsx</span>(<span class='no'>umberto10_data_pivot_list</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='no'>export_path</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

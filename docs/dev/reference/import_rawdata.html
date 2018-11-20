@@ -84,9 +84,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/tutorial.html">Tutorial</a>
+      <a href="../articles/tutorial_umberto07.html">Tutorial (Umberto NXT, v7.1.0.13.503)</a>
+    </li>
+    <li>
+      <a href="../articles/tutorial_umberto10.html">Tutorial (Umberto LCA+, v10.0.3.146)</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -120,15 +126,24 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>import_rawdata</span>(<span class='no'>csv_dir</span>)</pre>
+    <pre class="usage"><span class='fu'>import_rawdata</span>(<span class='no'>csv_dir</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>";"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>csv_dir</th>
-      <td><p>path to directory with .csv files (in GERMAN format, i.e. 
-sep = ";" and dec = ",") to be imported</p></td>
+      <td><p>path to directory with .csv files</p></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p>Single character used to separate fields within a record (default: 
+in GERMAN format, i.e. sep = ";")</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>further arguments passed to either readr::read_csv2 (default for sep == ';') or 
+readr::read_csv (if sep == ',')</p></td>
     </tr>
     </table>
     
@@ -138,19 +153,105 @@ sep = ";" and dec = ",") to be imported</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>zipfile</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/Beispiel_Auswertung.zip"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.umberto"</span>)
-<span class='no'>temp</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"Beispiel_Auswertung"</span>)
-<span class='fu'>unzip</span>(<span class='no'>zipfile</span>, <span class='kw'>exdir</span> <span class='kw'>=</span> <span class='no'>temp</span>)
-<span class='no'>rawdata</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/import_rawdata'>import_rawdata</a></span>(<span class='kw'>csv_dir</span> <span class='kw'>=</span> <span class='no'>temp</span>)</div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpstrnSQ/Beispiel_Auswertung/Ref_High_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpstrnSQ/Beispiel_Auswertung/Ref_High_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpstrnSQ/Beispiel_Auswertung/Ref_Low_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:\\Users\\mrustl.KWB\\AppData\\Local\\Temp\\RtmpstrnSQ/Beispiel_Auswertung/Ref_Low_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='input'><span class='fu'>head</span>(<span class='no'>rawdata</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 12
-#&gt;   project  model net   timestamp product lci_method phase process material_type
-#&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;        
-#&gt; 1 POWERST~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T03: A~ Bad          
-#&gt; 2 POWERST~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T06: C~ Bad          
-#&gt; 3 POWERST~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T06: C~ Bad          
-#&gt; 4 POWERST~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T07: C~ Bad          
-#&gt; 5 POWERST~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T11: E~ Bad          
-#&gt; 6 POWERST~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T11: E~ Bad          
-#&gt; # ... with 3 more variables: material &lt;chr&gt;, quantity &lt;dbl&gt;, unit &lt;chr&gt;</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>umberto7_csv_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/umberto-nxt_v7.1.0.13.503"</span>,
+<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.umberto"</span>)
+<span class='no'>umberto7_rawdata</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/import_rawdata'>import_rawdata</a></span>(<span class='kw'>csv_dir</span> <span class='kw'>=</span> <span class='no'>umberto7_csv_dir</span>)</div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_High_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  Project = col_character(),</span>
+#&gt; <span class='message'>  Model = col_character(),</span>
+#&gt; <span class='message'>  Net = col_character(),</span>
+#&gt; <span class='message'>  Timestamp = col_character(),</span>
+#&gt; <span class='message'>  Product = col_character(),</span>
+#&gt; <span class='message'>  `LCI Method` = col_character(),</span>
+#&gt; <span class='message'>  Phase = col_character(),</span>
+#&gt; <span class='message'>  Process = col_character(),</span>
+#&gt; <span class='message'>  `Material Type` = col_character(),</span>
+#&gt; <span class='message'>  Material = col_character(),</span>
+#&gt; <span class='message'>  Quantity = col_double(),</span>
+#&gt; <span class='message'>  Unit = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_High_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  Project = col_character(),</span>
+#&gt; <span class='message'>  Model = col_character(),</span>
+#&gt; <span class='message'>  Net = col_character(),</span>
+#&gt; <span class='message'>  Timestamp = col_character(),</span>
+#&gt; <span class='message'>  Product = col_character(),</span>
+#&gt; <span class='message'>  `LCI Method` = col_character(),</span>
+#&gt; <span class='message'>  Phase = col_character(),</span>
+#&gt; <span class='message'>  Process = col_character(),</span>
+#&gt; <span class='message'>  `Material Type` = col_character(),</span>
+#&gt; <span class='message'>  Material = col_character(),</span>
+#&gt; <span class='message'>  Quantity = col_double(),</span>
+#&gt; <span class='message'>  Unit = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_Low_C+high N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  Project = col_character(),</span>
+#&gt; <span class='message'>  Model = col_character(),</span>
+#&gt; <span class='message'>  Net = col_character(),</span>
+#&gt; <span class='message'>  Timestamp = col_character(),</span>
+#&gt; <span class='message'>  Product = col_character(),</span>
+#&gt; <span class='message'>  `LCI Method` = col_character(),</span>
+#&gt; <span class='message'>  Phase = col_character(),</span>
+#&gt; <span class='message'>  Process = col_character(),</span>
+#&gt; <span class='message'>  `Material Type` = col_character(),</span>
+#&gt; <span class='message'>  Material = col_character(),</span>
+#&gt; <span class='message'>  Quantity = col_double(),</span>
+#&gt; <span class='message'>  Unit = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-nxt_v7.1.0.13.503/Ref_Low_C+N.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  Project = col_character(),</span>
+#&gt; <span class='message'>  Model = col_character(),</span>
+#&gt; <span class='message'>  Net = col_character(),</span>
+#&gt; <span class='message'>  Timestamp = col_character(),</span>
+#&gt; <span class='message'>  Product = col_character(),</span>
+#&gt; <span class='message'>  `LCI Method` = col_character(),</span>
+#&gt; <span class='message'>  Phase = col_character(),</span>
+#&gt; <span class='message'>  Process = col_character(),</span>
+#&gt; <span class='message'>  `Material Type` = col_character(),</span>
+#&gt; <span class='message'>  Material = col_character(),</span>
+#&gt; <span class='message'>  Quantity = col_double(),</span>
+#&gt; <span class='message'>  Unit = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'>head</span>(<span class='no'>umberto7_rawdata</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 12
+#&gt;   project model net   timestamp product lci_method phase process material_type
+#&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;        
+#&gt; 1 POWERS~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T03: A~ Bad          
+#&gt; 2 POWERS~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T06: C~ Bad          
+#&gt; 3 POWERS~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T06: C~ Bad          
+#&gt; 4 POWERS~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T07: C~ Bad          
+#&gt; 5 POWERS~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T11: E~ Bad          
+#&gt; 6 POWERS~ 0d_R~ Main~ 11.10.20~ VOL [A~ ReCiPe Mi~ Other T11: E~ Bad          
+#&gt; # ... with 3 more variables: material &lt;chr&gt;, quantity &lt;dbl&gt;, unit &lt;chr&gt;</div><div class='input'>
+<span class='no'>umberto10_csv_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/umberto-lca+_v10.1.0.3.146"</span>,
+<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.umberto"</span>)
+<span class='no'>umberto10_rawdata</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/kwb.umberto/topics/import_rawdata'>import_rawdata</a></span>(<span class='kw'>csv_dir</span> <span class='kw'>=</span> <span class='no'>umberto10_csv_dir</span>)</div><div class='output co'>#&gt; [1] "Importing csv file 'C:/Users/mrustl.KWB/Documents/RProjects/kwb.umberto/inst/extdata/umberto-lca+_v10.1.0.3.146/smartech2_model-v0.1.0_input-v0.3.1.csv'"</div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  Project = col_character(),</span>
+#&gt; <span class='message'>  Model = col_character(),</span>
+#&gt; <span class='message'>  Net = col_character(),</span>
+#&gt; <span class='message'>  Timestamp = col_character(),</span>
+#&gt; <span class='message'>  Product = col_character(),</span>
+#&gt; <span class='message'>  `Product Name` = col_character(),</span>
+#&gt; <span class='message'>  `Product Arrow` = col_character(),</span>
+#&gt; <span class='message'>  `Product Flow Amount` = col_character(),</span>
+#&gt; <span class='message'>  `LCI Method` = col_character(),</span>
+#&gt; <span class='message'>  Phase = col_character(),</span>
+#&gt; <span class='message'>  Process = col_character(),</span>
+#&gt; <span class='message'>  `Material Type` = col_character(),</span>
+#&gt; <span class='message'>  Material = col_character(),</span>
+#&gt; <span class='message'>  Quantity = col_double(),</span>
+#&gt; <span class='message'>  Unit = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='input'><span class='fu'>head</span>(<span class='no'>umberto10_rawdata</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 15
+#&gt;   project model net   timestamp product product_name product_arrow
+#&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;        
+#&gt; 1 smarte~ 0_Re~ Main~ 12.09.20~ VOL [A~ VOL          A1 (P3 -&gt; T0~
+#&gt; 2 smarte~ 0_Re~ Main~ 12.09.20~ VOL [A~ VOL          A1 (P3 -&gt; T0~
+#&gt; 3 smarte~ 0_Re~ Main~ 12.09.20~ VOL [A~ VOL          A1 (P3 -&gt; T0~
+#&gt; 4 smarte~ 0_Re~ Main~ 12.09.20~ VOL [A~ VOL          A1 (P3 -&gt; T0~
+#&gt; 5 smarte~ 0_Re~ Main~ 12.09.20~ VOL [A~ VOL          A1 (P3 -&gt; T0~
+#&gt; 6 smarte~ 0_Re~ Main~ 12.09.20~ VOL [A~ VOL          A1 (P3 -&gt; T0~
+#&gt; # ... with 8 more variables: product_flow_amount &lt;chr&gt;, lci_method &lt;chr&gt;,
+#&gt; #   phase &lt;chr&gt;, process &lt;chr&gt;, material_type &lt;chr&gt;, material &lt;chr&gt;,
+#&gt; #   quantity &lt;dbl&gt;, unit &lt;chr&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

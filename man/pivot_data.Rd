@@ -28,11 +28,18 @@ data.frame with the aggregated results for all different"lci_method"
 Make pivot data
 }
 \examples{
-zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.umberto")
-temp <- file.path(tempdir(), "Beispiel_Auswertung")
-unzip(zipfile, exdir = temp)
-rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
-data_grouped <- kwb.umberto::group_data(rawdata)
-data_pivot <- kwb.umberto::pivot_data(data_grouped)
-head(data_pivot)
+umberto7_csv_dir <- system.file("extdata/umberto-nxt_v7.1.0.13.503", 
+package = "kwb.umberto")
+umberto7_rawdata <- kwb.umberto::import_rawdata(csv_dir = umberto7_csv_dir)
+umberto7_data_grouped <- kwb.umberto::group_data(umberto7_rawdata)
+umberto7_data_pivot <- kwb.umberto::pivot_data(umberto7_data_grouped)
+head(umberto7_data_pivot)
+
+umberto10_csv_dir <- system.file("extdata/umberto-lca+_v10.1.0.3.146", 
+package = "kwb.umberto")
+umberto10_rawdata <- kwb.umberto::import_rawdata(csv_dir = umberto10_csv_dir)
+umberto10_data_grouped <- kwb.umberto::group_data(umberto10_rawdata)
+umberto10_data_pivot <- kwb.umberto::pivot_data(umberto10_data_grouped)
+head(umberto10_data_pivot)
+
 }

@@ -22,10 +22,15 @@ aggregated data according
 Group data
 }
 \examples{
-zipfile <- system.file("extdata/Beispiel_Auswertung.zip", package = "kwb.umberto")
-temp <- file.path(tempdir(), "Beispiel_Auswertung")
-unzip(zipfile, exdir = temp)
-rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
-data_grouped <- kwb.umberto::group_data(rawdata)
-head(data_grouped)
+umberto7_csv_dir <- system.file("extdata/umberto-nxt_v7.1.0.13.503", 
+package = "kwb.umberto")
+umberto7_rawdata <- kwb.umberto::import_rawdata(csv_dir = umberto7_csv_dir)
+umberto7_data_grouped <- kwb.umberto::group_data(umberto7_rawdata)
+head(umberto7_data_grouped )
+
+umberto10_csv_dir <- system.file("extdata/umberto-lca+_v10.1.0.3.146", 
+package = "kwb.umberto")
+umberto10_rawdata <- kwb.umberto::import_rawdata(csv_dir = umberto10_csv_dir)
+umberto10_data_grouped <- kwb.umberto::group_data(umberto10_rawdata)
+head(umberto10_data_grouped)
 }

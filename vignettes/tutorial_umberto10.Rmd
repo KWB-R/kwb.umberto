@@ -1,0 +1,117 @@
+---
+title: "Tutorial (Umberto LCA+, v10.0.3.146)"
+author: "Michael Rustler"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# 1 Install R packages
+```{r, eval = FALSE}
+installed_packages <- rownames(installed.packages())
+
+if(!"devtools" %in% installed_packages) {
+  install.packages("devtools", repos = "https://cloud.r-project.org")
+}
+if(!"kwb.umberto" %in% installed_packages) {
+  devtools::install_github("KWB-R/kwb.umberto")
+}
+```
+
+# 2 Load the R package kwb.umberto
+```{r, fig.show='hold'}
+library(kwb.umberto)
+```
+
+# 3 Import data   
+
+## 3.1 Directory with example .csv files 
+
+The example .csv file (in German format, i.e. decimals are indicated with `,` 
+and `;` is used as field separator) was exported from Umberto LCA+ (v.10.0.3.146) 
+and attached to the R package `kwb.umberto` as shown below:
+
+```{r}
+temp <- system.file("extdata/umberto-lca+_v10.1.0.3.146", 
+                                 package = "kwb.umberto")
+
+dir(temp, pattern = ".csv")
+```
+
+## 3.2 Getting the data into R 
+
+Using the function `kwb.umberto::import_rawdata()` and specifying the parameter 
+`csv_dir` =  `temp`) imports the model results from one .csv file 
+that is located in the folder `r temp`.  
+
+```{r}
+rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
+```
+
+To access the structure of the imported data one can run the following command: 
+
+```{r}
+head(rawdata)
+```
+
+# 3.3 Data aggregation
+
+Once the data is imported into R, it can be aggregated as shown in the subsequent
+subchapters.
+
+## 3.3.1 Grouping
+
+```{r}
+data_grouped <- kwb.umberto::group_data(rawdata)
+head(data_grouped)
+```
+
+## 3.3.2 Making pivot data
+```{r}
+data_pivot <- kwb.umberto::pivot_data(data_grouped)
+head(data_pivot)
+```
+
+```{r}
+data_pivot_list <- kwb.umberto::create_pivot_list(data_pivot)
+head(data_pivot)
+```
+
+# 4 Data export
+
+Finally the resulting data can be exported to an EXCEL spreatsheet. For each 
+`lci_method` available in the imported dataset a sheet named `lci_method_1` to 
+`lci_method_9` will be created, as there are 9 distinct `lci_method` available 
+for this example data set: 
+
+`r sprintf("\n- %s\n", unique(rawdata$lci_method))`
+
+
+```{r}
+export_path <- file.path(temp, "results.xlsx")
+print(sprintf("Exporting aggregated results to %s", export_path))
+write_xlsx(data_pivot_list, 
+           path = export_path)
+```           
+
+# 5 Data visualisation
+
+In addition a simple visualisation of the imported and grouped data can 
+be performed by calling the function `kwb.umberto::plot_results()` as shown below:
+
+```{r}
+rawdata <- kwb.umberto::import_rawdata(csv_dir = temp)
+data_grouped <- kwb.umberto::group_data(rawdata)
+kwb.umberto::plot_results(grouped_data = data_grouped)
+```
+
