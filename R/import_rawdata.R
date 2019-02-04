@@ -23,9 +23,6 @@
 #' head(umberto10_rawdata)
 import_rawdata <- function(csv_dir, sep = ";", ...)
 {
-  # Define helper function to stop without giving the call in the message
-  stop_ <- function(...) stop(..., call. = FALSE)
-  
   csv_files <- list.files(csv_dir, pattern = "\\.csv$", full.names = TRUE)
   
   if (length(csv_files) < 1) {
@@ -37,9 +34,8 @@ import_rawdata <- function(csv_dir, sep = ";", ...)
   if (! identical(sep, ",") && ! identical(sep, ";")) {
     
     stop_(
-      "\nThe fields of the CSV input file '", csv_file, "' need to use one of ",
-      "the following separators: ';' or ','\nPlease specify the 'sep' ", 
-      "argument correctly!"
+      "\nThe fields of the CSV input files need to use one of the following ", 
+      "separators: ';' or ','\nPlease specify the 'sep' argument correctly!"
     )
   }
 
@@ -54,11 +50,11 @@ import_rawdata <- function(csv_dir, sep = ";", ...)
   }
   
   # Import all files
-  contents <- lapply(seq_along(csv_files), function(i) {
+  contents <- lapply(csv_files, function(csv_file) {
     
-    message(sprintf("Importing csv file '%s'", csv_files[i]))
+    message(sprintf("Importing csv file '%s'", csv_file))
     
-    janitor::clean_names(content)
+    janitor::clean_names(read_input(csv_file, ...))
   })
 
   # If only one file was read, return the only data frame in the list
@@ -68,11 +64,14 @@ import_rawdata <- function(csv_dir, sep = ";", ...)
   }
 
   # Otherwise check if all data frames have the same column names
-  stop_on_differing_names(contents)
+  stop_on_differing_names(stats::setNames(contents, basename(csv_files)))
 
   # Row-bind the data frames together
   do.call(rbind, contents)
 }
+
+# stop_ ------------------------------------------------------------------------
+stop_ <- function(...) stop(..., call. = FALSE)
 
 # stop_on_differing_names ------------------------------------------------------
 stop_on_differing_names <- function(x)
@@ -98,8 +97,8 @@ stop_on_differing_names <- function(x)
       
       stop_(
         "There are differing column names:\n", 
-        "  ", basename(csv_files[1]), ": ", paste(names_1, collapse = ", "),
-        "\n  ", basename(csv_files[i]), ": ", paste(names_i, collapse = ", ")
+        "  ", names(x)[1], ": ", paste(names_1, collapse = ", "),
+        "\n  ", names(x)[i], ": ", paste(names_i, collapse = ", ")
       )
     }
   }
