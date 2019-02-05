@@ -131,9 +131,9 @@
 <div id="getting-the-data-into-r" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-the-data-into-r" class="anchor"></a>3.2 Getting the data into R</h2>
-<p>Using the function <code><a href="../reference/import_rawdata.html">kwb.umberto::import_rawdata()</a></code> and specifying the parameter <code>csv_dir</code> = <code>temp</code>) imports the model results from one .csv file that is located in the folder /tmp/Rtmp1jqsQt/Beispiel_Auswertung.</p>
+<p>Using the function <code><a href="../reference/import_rawdata.html">kwb.umberto::import_rawdata()</a></code> and specifying the parameter <code>csv_dir</code> = <code>temp</code>) imports the model results from one .csv file that is located in the folder /tmp/RtmpiZstEl/Beispiel_Auswertung.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">rawdata &lt;-<span class="st"> </span>kwb.umberto<span class="op">::</span><span class="kw">import_rawdata</span>(<span class="dt">csv_dir =</span> temp)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Importing csv file '/tmp/Rtmp1jqsQt/Beispiel_Auswertung/Ref_High_C+high N.csv'</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Importing csv file '/tmp/RtmpiZstEl/Beispiel_Auswertung/Ref_High_C+high N.csv'</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; cols(</span></a>
@@ -150,7 +150,7 @@
 <a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt; Importing csv file '/tmp/Rtmp1jqsQt/Beispiel_Auswertung/Ref_High_C+N.csv'</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt; Importing csv file '/tmp/RtmpiZstEl/Beispiel_Auswertung/Ref_High_C+N.csv'</span></a>
 <a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt; cols(</span></a>
@@ -167,7 +167,7 @@
 <a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt; Importing csv file '/tmp/Rtmp1jqsQt/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span></a>
+<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt; Importing csv file '/tmp/RtmpiZstEl/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span></a>
 <a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb4-38" data-line-number="38"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb4-39" data-line-number="39"><span class="co">#&gt; cols(</span></a>
@@ -184,7 +184,7 @@
 <a class="sourceLine" id="cb4-50" data-line-number="50"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb4-51" data-line-number="51"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb4-52" data-line-number="52"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb4-53" data-line-number="53"><span class="co">#&gt; Importing csv file '/tmp/Rtmp1jqsQt/Beispiel_Auswertung/Ref_Low_C+N.csv'</span></a>
+<a class="sourceLine" id="cb4-53" data-line-number="53"><span class="co">#&gt; Importing csv file '/tmp/RtmpiZstEl/Beispiel_Auswertung/Ref_Low_C+N.csv'</span></a>
 <a class="sourceLine" id="cb4-54" data-line-number="54"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb4-55" data-line-number="55"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb4-56" data-line-number="56"><span class="co">#&gt; cols(</span></a>
@@ -324,7 +324,7 @@
 </ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">export_path &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.path">file.path</a></span>(temp, <span class="st">"results.xlsx"</span>)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sprintf">sprintf</a></span>(<span class="st">"Exporting aggregated results to %s"</span>, export_path))</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; [1] "Exporting aggregated results to /tmp/Rtmp1jqsQt/Beispiel_Auswertung/results.xlsx"</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; [1] "Exporting aggregated results to /tmp/RtmpiZstEl/Beispiel_Auswertung/results.xlsx"</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw"><a href="../reference/write_xlsx.html">write_xlsx</a></span>(data_pivot_list, </a>
 <a class="sourceLine" id="cb9-5" data-line-number="5">           <span class="dt">path =</span> export_path)</a></code></pre></div>
 </div>
@@ -333,7 +333,7 @@
 <a href="#data-visualisation" class="anchor"></a>5 Data visualisation</h1>
 <p>In addition a simple visualisation of the imported and grouped data can be performed by calling the function <code><a href="../reference/plot_results.html">kwb.umberto::plot_results()</a></code> as shown below:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">rawdata &lt;-<span class="st"> </span>kwb.umberto<span class="op">::</span><span class="kw">import_rawdata</span>(<span class="dt">csv_dir =</span> temp)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt; Importing csv file '/tmp/Rtmp1jqsQt/Beispiel_Auswertung/Ref_High_C+high N.csv'</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt; Importing csv file '/tmp/RtmpiZstEl/Beispiel_Auswertung/Ref_High_C+high N.csv'</span></a>
 <a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; cols(</span></a>
@@ -350,7 +350,7 @@
 <a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt; Importing csv file '/tmp/Rtmp1jqsQt/Beispiel_Auswertung/Ref_High_C+N.csv'</span></a>
+<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt; Importing csv file '/tmp/RtmpiZstEl/Beispiel_Auswertung/Ref_High_C+N.csv'</span></a>
 <a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">#&gt; cols(</span></a>
@@ -367,7 +367,7 @@
 <a class="sourceLine" id="cb10-33" data-line-number="33"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb10-34" data-line-number="34"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb10-35" data-line-number="35"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb10-36" data-line-number="36"><span class="co">#&gt; Importing csv file '/tmp/Rtmp1jqsQt/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span></a>
+<a class="sourceLine" id="cb10-36" data-line-number="36"><span class="co">#&gt; Importing csv file '/tmp/RtmpiZstEl/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span></a>
 <a class="sourceLine" id="cb10-37" data-line-number="37"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb10-38" data-line-number="38"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb10-39" data-line-number="39"><span class="co">#&gt; cols(</span></a>
@@ -384,7 +384,7 @@
 <a class="sourceLine" id="cb10-50" data-line-number="50"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb10-51" data-line-number="51"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb10-52" data-line-number="52"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb10-53" data-line-number="53"><span class="co">#&gt; Importing csv file '/tmp/Rtmp1jqsQt/Beispiel_Auswertung/Ref_Low_C+N.csv'</span></a>
+<a class="sourceLine" id="cb10-53" data-line-number="53"><span class="co">#&gt; Importing csv file '/tmp/RtmpiZstEl/Beispiel_Auswertung/Ref_Low_C+N.csv'</span></a>
 <a class="sourceLine" id="cb10-54" data-line-number="54"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb10-55" data-line-number="55"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb10-56" data-line-number="56"><span class="co">#&gt; cols(</span></a>
@@ -436,7 +436,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://mrustl.de">Michael Rustler</a>.</p>
+  <p>Developed by <a href="https://mrustl.de">Michael Rustler</a>.</p>
 </div>
 
 <div class="pkgdown">
