@@ -20,11 +20,11 @@ knitr::opts_chunk$set(
 ```{r, eval = FALSE}
 installed_packages <- rownames(installed.packages())
 
-if(!"devtools" %in% installed_packages) {
-  install.packages("devtools", repos = "https://cloud.r-project.org")
+if(!"remotes" %in% installed_packages) {
+  install.packages("remotes", repos = "https://cloud.r-project.org")
 }
 if(!"kwb.umberto" %in% installed_packages) {
-  devtools::install_github("KWB-R/kwb.umberto")
+  remotes::install_github("KWB-R/kwb.umberto")
 }
 ```
 
