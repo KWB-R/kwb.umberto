@@ -23,9 +23,9 @@ installed_packages <- rownames(installed.packages())
 if(!"remotes" %in% installed_packages) {
   install.packages("remotes", repos = "https://cloud.r-project.org")
 }
-if(!"kwb.umberto" %in% installed_packages) {
-  remotes::install_github("KWB-R/kwb.umberto")
-}
+
+remotes::install_github("KWB-R/kwb.umberto")
+
 ```
 
 # 2 Load the R package kwb.umberto
