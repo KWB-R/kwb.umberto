@@ -1,7 +1,0 @@
-pandoc: 2.2.1
-pkgdown: 1.1.0
-pkgdown_sha: ~
-articles:
-  tutorial_umberto07: tutorial_umberto07.html
-  tutorial_umberto10: tutorial_umberto10.html
-
