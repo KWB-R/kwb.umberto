@@ -8,6 +8,7 @@
 #' @return data.frame with all imported raw data
 #' @importFrom readr read_csv2 read_csv
 #' @importFrom janitor clean_names
+#' @importFrom data.table rbindlist
 #' @export
 #' @examples 
 #' zipfile <- system.file("extdata/umberto-nxt_v7.1.0.13.503/Beispiel_Auswertung.zip", 
@@ -67,7 +68,7 @@ import_rawdata <- function(csv_dir, sep = ";", ...)
   stop_on_differing_names(stats::setNames(contents, basename(csv_files)))
 
   # Row-bind the data frames together
-  do.call(rbind, contents)
+  data.table::rbindlist(contents, use.names = TRUE)
 }
 
 # stop_ ------------------------------------------------------------------------

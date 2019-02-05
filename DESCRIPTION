@@ -1,30 +1,42 @@
 Package: kwb.umberto
-Version: 0.1.0.9000
 Title: R package supporting UMERTO LCA at KWB
+Version: 0.1.0.9000
+Authors@R: 
+    c(person(given = "Michael",
+             family = "Rustler",
+             role = c("aut", "cre"),
+             email = "michael.rustler@kompetenz-wasser.de",
+             comment = c(ORCID = "0000-0003-0647-7726")),
+      person(given = "Hauke",
+             family = "Sonnenberg",
+             role = "ctb",
+             email = "hauke.sonnenberg@kompetenz-wasser.de",
+             comment = c(ORCID = "0000-0001-9134-2871")),
+      person(given = "Kompetenzzentrum Wasser Berlin gGmbH (KWB)",
+             role = "cph"))
 Description: Helper functions for data import, aggregation and
-            visualisation of UMBERTO (https://www.ifu.com/umberto/) model output.
-Authors@R: c(person("Michael", "Rustler", , "michael.rustler@kompetenz-wasser.de",
-           role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0647-7726")),
-           person("Kompetenzzentrum Wasser Berlin gGmbH (KWB)", role = c("cph")))
-Imports: 
-  dplyr, 
-  ggforce,
-  ggplot2,
-  janitor,
-  magrittr,
-  openxlsx,
-  readr,
-  tidyr
+    visualisation of UMBERTO (https://www.ifu.com/umberto/) model output.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-ByteCompile: true
 URL: https://github.com/KWB-R/kwb.umberto
 BugReports: https:/github.com/KWB-R/kwb.umberto/issues
+Imports: 
+    data.table,
+    dplyr,
+    ggforce,
+    ggplot2,
+    janitor,
+    magrittr,
+    openxlsx,
+    readr,
+    tidyr
 Suggests: 
     covr,
     knitr,
     rmarkdown,
     testthat
-RoxygenNote: 6.1.0
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr
+ByteCompile: true
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
