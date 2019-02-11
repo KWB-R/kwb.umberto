@@ -29,6 +29,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 <meta property="og:title" content="Make pivot data — pivot_data" />
 
@@ -107,6 +113,12 @@
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -167,7 +179,7 @@ transforming the data from the "list" to the "wide" format with tidyr::spread()
 <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"kwb.umberto"</span>)
 <span class='no'>umberto7_csv_dir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></span>(), <span class='st'>"Beispiel_Auswertung"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/unzip'>unzip</a></span>(<span class='no'>zipfile</span>, <span class='kw'>exdir</span> <span class='kw'>=</span> <span class='no'>umberto7_csv_dir</span>)
-<span class='no'>umberto7_rawdata</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/kwb.umberto/topics/import_rawdata'>import_rawdata</a></span>(<span class='kw'>csv_dir</span> <span class='kw'>=</span> <span class='no'>umberto7_csv_dir</span>)</div><div class='output co'>#&gt; <span class='message'>Importing csv file '/tmp/RtmpMBqCjr/Beispiel_Auswertung/Ref_High_C+high N.csv'</span></div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='no'>umberto7_rawdata</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.umberto</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/kwb.umberto/topics/import_rawdata'>import_rawdata</a></span>(<span class='kw'>csv_dir</span> <span class='kw'>=</span> <span class='no'>umberto7_csv_dir</span>)</div><div class='output co'>#&gt; <span class='message'>Importing csv file '/tmp/Rtmpw9FRuZ/Beispiel_Auswertung/Ref_High_C+high N.csv'</span></div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  Project = col_character(),</span>
 #&gt; <span class='message'>  Model = col_character(),</span>
@@ -181,7 +193,7 @@ transforming the data from the "list" to the "wide" format with tidyr::spread()
 #&gt; <span class='message'>  Material = col_character(),</span>
 #&gt; <span class='message'>  Quantity = col_double(),</span>
 #&gt; <span class='message'>  Unit = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Importing csv file '/tmp/RtmpMBqCjr/Beispiel_Auswertung/Ref_High_C+N.csv'</span></div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Importing csv file '/tmp/Rtmpw9FRuZ/Beispiel_Auswertung/Ref_High_C+N.csv'</span></div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  Project = col_character(),</span>
 #&gt; <span class='message'>  Model = col_character(),</span>
@@ -195,7 +207,7 @@ transforming the data from the "list" to the "wide" format with tidyr::spread()
 #&gt; <span class='message'>  Material = col_character(),</span>
 #&gt; <span class='message'>  Quantity = col_double(),</span>
 #&gt; <span class='message'>  Unit = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Importing csv file '/tmp/RtmpMBqCjr/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span></div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Importing csv file '/tmp/Rtmpw9FRuZ/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span></div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  Project = col_character(),</span>
 #&gt; <span class='message'>  Model = col_character(),</span>
@@ -209,7 +221,7 @@ transforming the data from the "list" to the "wide" format with tidyr::spread()
 #&gt; <span class='message'>  Material = col_character(),</span>
 #&gt; <span class='message'>  Quantity = col_double(),</span>
 #&gt; <span class='message'>  Unit = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Importing csv file '/tmp/RtmpMBqCjr/Beispiel_Auswertung/Ref_Low_C+N.csv'</span></div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Importing csv file '/tmp/Rtmpw9FRuZ/Beispiel_Auswertung/Ref_Low_C+N.csv'</span></div><div class='output co'>#&gt; <span class='message'>Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  Project = col_character(),</span>
 #&gt; <span class='message'>  Model = col_character(),</span>
@@ -294,6 +306,23 @@ transforming the data from the "list" to the "wide" format with tidyr::spread()
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '5baddfa2cda49caf13942c5e1c7a0d39',
+    indexName: 'kwb_umberto',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>
