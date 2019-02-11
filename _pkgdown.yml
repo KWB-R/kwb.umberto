@@ -10,6 +10,9 @@ authors:
 template:
   params:
     bootswatch: cerulean
+    docsearch:
+      api_key: 5baddfa2cda49caf13942c5e1c7a0d39
+      index_name: kwb_umberto
 development:
   mode: auto
 
