@@ -27,3 +27,6 @@ vignettes/*.pdf
 rsconnect/
 inst/doc
 .Rproj.user
+
+# and deploys the website to "gh-pages" branch
+docs

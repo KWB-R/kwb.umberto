@@ -4,7 +4,7 @@ author: "Michael Rustler"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Tutorial (Umberto LCA+, v10.0.3.146)}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -20,12 +20,11 @@ knitr::opts_chunk$set(
 ```{r, eval = FALSE}
 installed_packages <- rownames(installed.packages())
 
-if(!"devtools" %in% installed_packages) {
-  install.packages("devtools", repos = "https://cloud.r-project.org")
+if(!"remotes" %in% installed_packages) {
+  install.packages("remotes", repos = "https://cloud.r-project.org")
 }
-if(!"kwb.umberto" %in% installed_packages) {
-  devtools::install_github("KWB-R/kwb.umberto")
-}
+
+remotes::install_github("KWB-R/kwb.umberto")
 ```
 
 # 2 Load the R package kwb.umberto

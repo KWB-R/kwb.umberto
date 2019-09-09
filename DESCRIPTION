@@ -1,6 +1,6 @@
 Package: kwb.umberto
 Title: R package supporting UMERTO LCA at KWB
-Version: 0.1.0.9000
+Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Michael",
              family = "Rustler",
@@ -18,7 +18,7 @@ Description: Helper functions for data import, aggregation and
     visualisation of UMBERTO (https://www.ifu.com/umberto/) model output.
 License: MIT + file LICENSE
 URL: https://github.com/KWB-R/kwb.umberto
-BugReports: https:/github.com/KWB-R/kwb.umberto/issues
+BugReports: https://github.com/KWB-R/kwb.umberto/issues
 Imports: 
     data.table,
     dplyr,
