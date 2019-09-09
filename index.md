@@ -9,7 +9,7 @@ visualisation of UMBERTO (https://www.ifu.com/umberto/) model output.
 
 ## Installation
 
-```{r echo = TRUE, eval = FALSE}
+```r
 #install.packages("remotes", repos = "https://cloud.r-project.org")
 remotes::install_github("KWB-R/kwb.umberto")
 ```
