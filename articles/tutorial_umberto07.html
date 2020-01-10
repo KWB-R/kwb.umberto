@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.umberto</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -96,7 +96,7 @@
       <h1>Tutorial (Umberto NXT, v7.1.0.13.503)</h1>
                         <h4 class="author">Michael Rustler</h4>
             
-            <h4 class="date">2019-09-09</h4>
+            <h4 class="date">2020-01-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/KWB-R/kwb.umberto/blob/master/vignettes/tutorial_umberto07.Rmd"><code>vignettes/tutorial_umberto07.Rmd</code></a></small>
       <div class="hidden name"><code>tutorial_umberto07.Rmd</code></div>
@@ -140,9 +140,9 @@
 <div id="getting-the-data-into-r" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-the-data-into-r" class="anchor"></a>3.2 Getting the data into R</h2>
-<p>Using the function <code><a href="../reference/import_rawdata.html">kwb.umberto::import_rawdata()</a></code> and specifying the parameter <code>csv_dir</code> = <code>temp</code>) imports the model results from one .csv file that is located in the folder /tmp/RtmpRQs9NN/Beispiel_Auswertung.</p>
+<p>Using the function <code><a href="../reference/import_rawdata.html">kwb.umberto::import_rawdata()</a></code> and specifying the parameter <code>csv_dir</code> = <code>temp</code>) imports the model results from one .csv file that is located in the folder /tmp/Rtmp37inms/Beispiel_Auswertung.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">rawdata &lt;-<span class="st"> </span>kwb.umberto<span class="op">::</span><span class="kw">import_rawdata</span>(<span class="dt">csv_dir =</span> temp)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Importing csv file '/tmp/RtmpRQs9NN/Beispiel_Auswertung/Ref_High_C+high N.csv'</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Importing csv file '/tmp/Rtmp37inms/Beispiel_Auswertung/Ref_High_C+high N.csv'</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; cols(</span></a>
@@ -159,7 +159,7 @@
 <a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt; Importing csv file '/tmp/RtmpRQs9NN/Beispiel_Auswertung/Ref_High_C+N.csv'</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt; Importing csv file '/tmp/Rtmp37inms/Beispiel_Auswertung/Ref_High_C+N.csv'</span></a>
 <a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt; cols(</span></a>
@@ -176,7 +176,7 @@
 <a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt; Importing csv file '/tmp/RtmpRQs9NN/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span></a>
+<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt; Importing csv file '/tmp/Rtmp37inms/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span></a>
 <a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb4-38" data-line-number="38"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb4-39" data-line-number="39"><span class="co">#&gt; cols(</span></a>
@@ -193,7 +193,7 @@
 <a class="sourceLine" id="cb4-50" data-line-number="50"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb4-51" data-line-number="51"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb4-52" data-line-number="52"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb4-53" data-line-number="53"><span class="co">#&gt; Importing csv file '/tmp/RtmpRQs9NN/Beispiel_Auswertung/Ref_Low_C+N.csv'</span></a>
+<a class="sourceLine" id="cb4-53" data-line-number="53"><span class="co">#&gt; Importing csv file '/tmp/Rtmp37inms/Beispiel_Auswertung/Ref_Low_C+N.csv'</span></a>
 <a class="sourceLine" id="cb4-54" data-line-number="54"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb4-55" data-line-number="55"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb4-56" data-line-number="56"><span class="co">#&gt; cols(</span></a>
@@ -267,14 +267,14 @@
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(data_grouped)</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; # A tibble: 6 x 5</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; # Groups:   lci_method, model, process [6]</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;   lci_method                   model   process           unit  quantity_sum</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;                        &lt;chr&gt;   &lt;chr&gt;             &lt;chr&gt;        &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 1 cumulative energy demand - … 0a_Ref… T11: Electricity… MJ-Eq      145350.</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 2 cumulative energy demand - … 0a_Ref… T12: Electricity… MJ-Eq       30204.</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 3 cumulative energy demand - … 0a_Ref… T13: FeCl3        MJ-Eq       17734.</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 4 cumulative energy demand - … 0a_Ref… T14: Polymer      MJ-Eq       21443.</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 5 cumulative energy demand - … 0a_Ref… T15: Sludge tran… MJ-Eq       22137.</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 6 cumulative energy demand - … 0a_Ref… T21: Mono-Incine… MJ-Eq        5687.</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;   lci_method                      model    process            unit  quantity_sum</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;                           &lt;chr&gt;    &lt;chr&gt;              &lt;chr&gt;        &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 1 cumulative energy demand - fos… 0a_Ref_… T11: Electricity … MJ-Eq      145350.</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 2 cumulative energy demand - fos… 0a_Ref_… T12: Electricity … MJ-Eq       30204.</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 3 cumulative energy demand - fos… 0a_Ref_… T13: FeCl3         MJ-Eq       17734.</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 4 cumulative energy demand - fos… 0a_Ref_… T14: Polymer       MJ-Eq       21443.</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 5 cumulative energy demand - fos… 0a_Ref_… T15: Sludge trans… MJ-Eq       22137.</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 6 cumulative energy demand - fos… 0a_Ref_… T21: Mono-Inciner… MJ-Eq        5687.</span></a></code></pre></div>
 </div>
 <div id="making-pivot-data" class="section level2">
 <h2 class="hasAnchor">
@@ -293,27 +293,23 @@
 <a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt; 6 cumulativ… T21: M…            5687.            5829.            5906.</span></a>
 <a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt; # … with 1 more variable: `0d_Ref_High_C+high N` &lt;dbl&gt;</span></a></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">data_pivot_list &lt;-<span class="st"> </span>kwb.umberto<span class="op">::</span><span class="kw">create_pivot_list</span>(data_pivot)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(data_pivot)</a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; # Groups:   lci_method, process [6]</span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt;   lci_method process `0a_Ref_Low_C+N` `0b_Ref_High_C+… `0c_Ref_Low_C+h…</span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; 1 cumulativ… T11: E…          145350.          135761.          162218.</span></a>
-<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; 2 cumulativ… T12: E…           30204.           29674.           30950.</span></a>
-<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt; 3 cumulativ… T13: F…           17734.           23087.           25930.</span></a>
-<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="co">#&gt; 4 cumulativ… T14: P…           21443.           22178.           21871.</span></a>
-<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="co">#&gt; 5 cumulativ… T15: S…           22137.           22794.           23126.</span></a>
-<a class="sourceLine" id="cb8-21" data-line-number="21"><span class="co">#&gt; 6 cumulativ… T21: M…            5687.            5829.            5906.</span></a>
-<a class="sourceLine" id="cb8-22" data-line-number="22"><span class="co">#&gt; # … with 1 more variable: `0d_Ref_High_C+high N` &lt;dbl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Joining, by = c("lci_method", "process")Joining, by = c("lci_method",</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; "process")Joining, by = c("lci_method", "process")Joining, by = c("lci_method",</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; "process")Joining, by = c("lci_method", "process")Joining, by = c("lci_method",</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; "process")Joining, by = c("lci_method", "process")Joining, by = c("lci_method",</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; "process")Joining, by = c("lci_method", "process")</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(data_pivot)</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; # Groups:   lci_method, process [6]</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt;   lci_method process `0a_Ref_Low_C+N` `0b_Ref_High_C+… `0c_Ref_Low_C+h…</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;              &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 1 cumulativ… T11: E…          145350.          135761.          162218.</span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; 2 cumulativ… T12: E…           30204.           29674.           30950.</span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; 3 cumulativ… T13: F…           17734.           23087.           25930.</span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; 4 cumulativ… T14: P…           21443.           22178.           21871.</span></a>
+<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; 5 cumulativ… T15: S…           22137.           22794.           23126.</span></a>
+<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; 6 cumulativ… T21: M…            5687.            5829.            5906.</span></a>
+<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt; # … with 1 more variable: `0d_Ref_High_C+high N` &lt;dbl&gt;</span></a></code></pre></div>
 </div>
 </div>
 <div id="data-export" class="section level1">
@@ -333,17 +329,16 @@
 </ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">export_path &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(temp, <span class="st">"results.xlsx"</span>)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span>(<span class="st">"Exporting aggregated results to %s"</span>, export_path))</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; [1] "Exporting aggregated results to /tmp/RtmpRQs9NN/Beispiel_Auswertung/results.xlsx"</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; [1] "Exporting aggregated results to /tmp/Rtmp37inms/Beispiel_Auswertung/results.xlsx"</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw"><a href="../reference/write_xlsx.html">write_xlsx</a></span>(data_pivot_list, </a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">           <span class="dt">path =</span> export_path)</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; Note: zip::zip() is deprecated, please use zip::zipr() instead</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-5" data-line-number="5">           <span class="dt">path =</span> export_path)</a></code></pre></div>
 </div>
 <div id="data-visualisation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#data-visualisation" class="anchor"></a>5 Data visualisation</h1>
 <p>In addition a simple visualisation of the imported and grouped data can be performed by calling the function <code><a href="../reference/plot_results.html">kwb.umberto::plot_results()</a></code> as shown below:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">rawdata &lt;-<span class="st"> </span>kwb.umberto<span class="op">::</span><span class="kw">import_rawdata</span>(<span class="dt">csv_dir =</span> temp)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt; Importing csv file '/tmp/RtmpRQs9NN/Beispiel_Auswertung/Ref_High_C+high N.csv'</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt; Importing csv file '/tmp/Rtmp37inms/Beispiel_Auswertung/Ref_High_C+high N.csv'</span></a>
 <a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt; cols(</span></a>
@@ -360,7 +355,7 @@
 <a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt; Importing csv file '/tmp/RtmpRQs9NN/Beispiel_Auswertung/Ref_High_C+N.csv'</span></a>
+<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt; Importing csv file '/tmp/Rtmp37inms/Beispiel_Auswertung/Ref_High_C+N.csv'</span></a>
 <a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">#&gt; cols(</span></a>
@@ -377,7 +372,7 @@
 <a class="sourceLine" id="cb10-33" data-line-number="33"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb10-34" data-line-number="34"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb10-35" data-line-number="35"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb10-36" data-line-number="36"><span class="co">#&gt; Importing csv file '/tmp/RtmpRQs9NN/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span></a>
+<a class="sourceLine" id="cb10-36" data-line-number="36"><span class="co">#&gt; Importing csv file '/tmp/Rtmp37inms/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span></a>
 <a class="sourceLine" id="cb10-37" data-line-number="37"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb10-38" data-line-number="38"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb10-39" data-line-number="39"><span class="co">#&gt; cols(</span></a>
@@ -394,7 +389,7 @@
 <a class="sourceLine" id="cb10-50" data-line-number="50"><span class="co">#&gt;   Quantity = col_double(),</span></a>
 <a class="sourceLine" id="cb10-51" data-line-number="51"><span class="co">#&gt;   Unit = col_character()</span></a>
 <a class="sourceLine" id="cb10-52" data-line-number="52"><span class="co">#&gt; )</span></a>
-<a class="sourceLine" id="cb10-53" data-line-number="53"><span class="co">#&gt; Importing csv file '/tmp/RtmpRQs9NN/Beispiel_Auswertung/Ref_Low_C+N.csv'</span></a>
+<a class="sourceLine" id="cb10-53" data-line-number="53"><span class="co">#&gt; Importing csv file '/tmp/Rtmp37inms/Beispiel_Auswertung/Ref_Low_C+N.csv'</span></a>
 <a class="sourceLine" id="cb10-54" data-line-number="54"><span class="co">#&gt; Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.</span></a>
 <a class="sourceLine" id="cb10-55" data-line-number="55"><span class="co">#&gt; Parsed with column specification:</span></a>
 <a class="sourceLine" id="cb10-56" data-line-number="56"><span class="co">#&gt; cols(</span></a>
@@ -452,7 +447,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.umberto</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -96,7 +96,7 @@
       <h1>Tutorial (Umberto LCA+, v10.0.3.146)</h1>
                         <h4 class="author">Michael Rustler</h4>
             
-            <h4 class="date">2019-09-09</h4>
+            <h4 class="date">2020-01-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/KWB-R/kwb.umberto/blob/master/vignettes/tutorial_umberto10.Rmd"><code>vignettes/tutorial_umberto10.Rmd</code></a></small>
       <div class="hidden name"><code>tutorial_umberto10.Rmd</code></div>
@@ -186,14 +186,14 @@
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(data_grouped)</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; # A tibble: 6 x 5</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; # Groups:   lci_method, model, process [6]</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;   lci_method                     model     process       unit  quantity_sum</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;                          &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;        &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 1 cumulative energy demand - fo… 0_Refere… T14: Polymer  MJ-Eq    10433117.</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 2 cumulative energy demand - fo… 0_Refere… T15: Sludge … MJ-Eq        1763.</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 3 cumulative energy demand - fo… 0_Refere… T21: fertili… MJ-Eq    -7072323.</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 4 cumulative energy demand - fo… 0_Refere… T31: Electri… MJ-Eq   -13154124.</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 5 cumulative energy demand - fo… 0_Refere… T4: Electric… MJ-Eq   181431756.</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 6 cumulative energy demand - nu… 0_Refere… T14: Polymer  MJ-Eq      296075.</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;   lci_method                         model     process        unit  quantity_sum</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;                              &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;        &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 1 cumulative energy demand - fossil… 0_Refere… T14: Polymer   MJ-Eq    10433117.</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 2 cumulative energy demand - fossil… 0_Refere… T15: Sludge t… MJ-Eq        1763.</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 3 cumulative energy demand - fossil… 0_Refere… T21: fertiliz… MJ-Eq    -7072323.</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 4 cumulative energy demand - fossil… 0_Refere… T31: Electric… MJ-Eq   -13154124.</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 5 cumulative energy demand - fossil… 0_Refere… T4: Electrici… MJ-Eq   181431756.</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 6 cumulative energy demand - nuclea… 0_Refere… T14: Polymer   MJ-Eq      296075.</span></a></code></pre></div>
 </div>
 <div id="making-pivot-data" class="section level2">
 <h2 class="hasAnchor">
@@ -202,35 +202,31 @@
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(data_pivot)</a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; # Groups:   lci_method, process [6]</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;   lci_method                             process           `0_Reference_Ag…</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;                                  &lt;chr&gt;                        &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; 1 cumulative energy demand - fossil, no… T14: Polymer             10433117.</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 2 cumulative energy demand - fossil, no… T15: Sludge tran…            1763.</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; 3 cumulative energy demand - fossil, no… T21: fertilizer …        -7072323.</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; 4 cumulative energy demand - fossil, no… T31: Electricity…       -13154124.</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; 5 cumulative energy demand - fossil, no… T4: Electricity …       181431756.</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt; 6 cumulative energy demand - nuclear, n… T14: Polymer               296075.</span></a></code></pre></div>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;   lci_method                                 process            `0_Reference_Ag…</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;   &lt;chr&gt;                                      &lt;chr&gt;                         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; 1 cumulative energy demand - fossil, non-re… T14: Polymer              10433117.</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 2 cumulative energy demand - fossil, non-re… T15: Sludge trans…            1763.</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; 3 cumulative energy demand - fossil, non-re… T21: fertilizer s…        -7072323.</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; 4 cumulative energy demand - fossil, non-re… T31: Electricity …       -13154124.</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; 5 cumulative energy demand - fossil, non-re… T4: Electricity […       181431756.</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt; 6 cumulative energy demand - nuclear, non-r… T14: Polymer                296075.</span></a></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">data_pivot_list &lt;-<span class="st"> </span>kwb.umberto<span class="op">::</span><span class="kw">create_pivot_list</span>(data_pivot)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; Joining, by = c("lci_method", "process")</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(data_pivot)</a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; # Groups:   lci_method, process [6]</span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt;   lci_method                             process           `0_Reference_Ag…</span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt;   &lt;chr&gt;                                  &lt;chr&gt;                        &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; 1 cumulative energy demand - fossil, no… T14: Polymer             10433117.</span></a>
-<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; 2 cumulative energy demand - fossil, no… T15: Sludge tran…            1763.</span></a>
-<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt; 3 cumulative energy demand - fossil, no… T21: fertilizer …        -7072323.</span></a>
-<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="co">#&gt; 4 cumulative energy demand - fossil, no… T31: Electricity…       -13154124.</span></a>
-<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="co">#&gt; 5 cumulative energy demand - fossil, no… T4: Electricity …       181431756.</span></a>
-<a class="sourceLine" id="cb8-21" data-line-number="21"><span class="co">#&gt; 6 cumulative energy demand - nuclear, n… T14: Polymer               296075.</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; Joining, by = c("lci_method", "process")Joining, by = c("lci_method",</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; "process")Joining, by = c("lci_method", "process")Joining, by = c("lci_method",</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; "process")Joining, by = c("lci_method", "process")Joining, by = c("lci_method",</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; "process")Joining, by = c("lci_method", "process")Joining, by = c("lci_method",</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; "process")Joining, by = c("lci_method", "process")</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(data_pivot)</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; # Groups:   lci_method, process [6]</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt;   lci_method                                 process            `0_Reference_Ag…</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt;   &lt;chr&gt;                                      &lt;chr&gt;                         &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 1 cumulative energy demand - fossil, non-re… T14: Polymer              10433117.</span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt; 2 cumulative energy demand - fossil, non-re… T15: Sludge trans…            1763.</span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt; 3 cumulative energy demand - fossil, non-re… T21: fertilizer s…        -7072323.</span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; 4 cumulative energy demand - fossil, non-re… T31: Electricity …       -13154124.</span></a>
+<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; 5 cumulative energy demand - fossil, non-re… T4: Electricity […       181431756.</span></a>
+<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; 6 cumulative energy demand - nuclear, non-r… T14: Polymer                296075.</span></a></code></pre></div>
 </div>
 </div>
 <div id="data-export" class="section level1">
@@ -252,8 +248,7 @@
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span>(<span class="st">"Exporting aggregated results to %s"</span>, export_path))</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; [1] "Exporting aggregated results to /home/travis/R/Library/kwb.umberto/extdata/umberto-lca+_v10.1.0.3.146/results.xlsx"</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw"><a href="../reference/write_xlsx.html">write_xlsx</a></span>(data_pivot_list, </a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">           <span class="dt">path =</span> export_path)</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; Note: zip::zip() is deprecated, please use zip::zipr() instead</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-5" data-line-number="5">           <span class="dt">path =</span> export_path)</a></code></pre></div>
 </div>
 <div id="data-visualisation" class="section level1">
 <h1 class="hasAnchor">
@@ -321,7 +316,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
