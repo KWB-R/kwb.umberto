@@ -4,8 +4,11 @@
 \alias{group_data}
 \title{Group data}
 \usage{
-group_data(raw_data, grouping_paras = c("lci_method", "model", "process",
-  "unit"), grouping_function = "sum")
+group_data(
+  raw_data,
+  grouping_paras = c("lci_method", "model", "process", "unit"),
+  grouping_function = "sum"
+)
 }
 \arguments{
 \item{raw_data}{as retrieved by function import_rawdata()}

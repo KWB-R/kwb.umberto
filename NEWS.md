@@ -2,7 +2,7 @@
 
 * Add support for new Umberto version ([#11](https://github.com/KWB-R/kwb.umberto/issues/11))
 
-* Harmonise with [kwb.pkgbuild](https://kwb-r.github.io/kwb.pkgbuild) (  ([#12](https://github.com/KWB-R/kwb.umberto/issues/12))
+* Harmonise with [kwb.pkgbuild](https://kwb-r.github.io/kwb.pkgbuild) ([#12](https://github.com/KWB-R/kwb.umberto/issues/12))
 
 
 # [kwb.umberto 0.1.0](https://github.com/KWB-R/kwb.umberto/releases/tag/v0.1.0) <small>2020-01-10</small>

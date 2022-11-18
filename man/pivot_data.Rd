@@ -4,8 +4,12 @@
 \alias{pivot_data}
 \title{Make pivot data}
 \usage{
-pivot_data(rawdata_grouped, cols_to_ignore = "unit", key_col = "model",
-  value_col = "quantity_sum")
+pivot_data(
+  rawdata_grouped,
+  cols_to_ignore = "unit",
+  key_col = "model",
+  value_col = "quantity_sum"
+)
 }
 \arguments{
 \item{rawdata_grouped}{grouped rawdata as retrieved by function group_data()}
