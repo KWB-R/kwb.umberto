@@ -1,4 +1,11 @@
-# [kwb.umberto 0.0.0.9000](https://github.com/KWB-R/kwb.umberto) <small>unreleased</small>
+# [kwb.umberto 0.2.0](https://github.com/KWB-R/kwb.umberto/releases/tag/v0.2.0) <small>unreleased</small>
+
+* Add support for new Umberto version ([#11](https://github.com/KWB-R/kwb.umberto/issues/11))
+
+* Harmonise with [kwb.pkgbuild](https://kwb-r.github.io/kwb.pkgbuild) (  ([#12](https://github.com/KWB-R/kwb.umberto/issues/12))
+
+
+# [kwb.umberto 0.1.0](https://github.com/KWB-R/kwb.umberto/releases/tag/v0.1.0) <small>2020-01-10</small>
 
 * Add support for importing .csv files created with Umberto LCA+, v10.0.3.146 
 (#3) with 3 new columns ("product_name", "product_arrow", "product_flow_amount") 
