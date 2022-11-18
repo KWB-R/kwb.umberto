@@ -13,7 +13,7 @@ write_xlsx(data_pivot_list, path = "results.xlsx")
 EXCEL (default: "results.xlsx")}
 }
 \value{
-writes results in EXCEl file defined in "path", where each sheet
+writes results in EXCEL file defined in "path", where each sheet
 }
 \description{
 Write results to EXCEL

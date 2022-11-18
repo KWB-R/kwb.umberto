@@ -23,7 +23,8 @@ Imports:
     magrittr,
     openxlsx,
     readr,
-    tidyr
+    tidyr,
+    tidyselect
 Suggests: 
     covr,
     knitr,

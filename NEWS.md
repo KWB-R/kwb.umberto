@@ -4,6 +4,7 @@
 
 * Harmonise with [kwb.pkgbuild](https://kwb-r.github.io/kwb.pkgbuild) ([#12](https://github.com/KWB-R/kwb.umberto/issues/12))
 
+* Fix `tidyverse` deprecated warnings ([#13](https://github.com/KWB-R/kwb.umberto/issues/13))
 
 # [kwb.umberto 0.1.0](https://github.com/KWB-R/kwb.umberto/releases/tag/v0.1.0) <small>2020-01-10</small>
 

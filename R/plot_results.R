@@ -8,7 +8,7 @@
 #' @param fill_col column name to be used for filling (default: "process") 
 #' @import ggplot2 
 #' @importFrom ggforce facet_wrap_paginate
-#' @return simple plots for all differn
+#' @return simple plots for all different groups
 #' @export
 #' @examples
 #' zipfile <- system.file("extdata/umberto-nxt_v7.1.0.13.503/Beispiel_Auswertung.zip", 

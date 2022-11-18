@@ -17,18 +17,19 @@ knitr::opts_chunk$set(
 ```
 
 # 1 Install R packages
+
 ```{r, eval = FALSE}
-installed_packages <- rownames(installed.packages())
+# Enable repository from kwb-r
+options(repos = c(
+  kwbr = 'https://kwb-r.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org'))
 
-if(!"remotes" %in% installed_packages) {
-  install.packages("remotes", repos = "https://cloud.r-project.org")
-}
-
-remotes::install_github("KWB-R/kwb.umberto")
-
+# Download and install kwb.umberto in R
+install.packages('kwb.umberto')
 ```
 
 # 2 Load the R package kwb.umberto
+
 ```{r, fig.show='hold'}
 library(kwb.umberto)
 ```

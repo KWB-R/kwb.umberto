@@ -23,7 +23,7 @@ function group_data()}
 \item{fill_col}{column name to be used for filling (default: "process")}
 }
 \value{
-simple plots for all differn
+simple plots for all different groups
 }
 \description{
 Plot results
