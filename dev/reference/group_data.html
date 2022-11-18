@@ -61,7 +61,8 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">group_data</span><span class="op">(</span></span>
 <span>  <span class="va">raw_data</span>,</span>
 <span>  grouping_paras <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lci_method"</span>, <span class="st">"model"</span>, <span class="st">"process"</span>, <span class="st">"unit"</span><span class="op">)</span>,</span>
-<span>  grouping_function <span class="op">=</span> <span class="st">"sum"</span></span>
+<span>  grouping_function <span class="op">=</span> <span class="st">"sum"</span>,</span>
+<span>  summarise_col <span class="op">=</span> <span class="st">"quantity"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -79,6 +80,11 @@
 <dt>grouping_function</dt>
 <dd><p>R function used for grouping (default: "sum")</p></dd>
 
+
+<dt>summarise_col</dt>
+<dd><p>column name used for summarising (default: "quantity"), 
+i.e. for which the "grouping_function" should be applied</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -94,7 +100,7 @@
 <span class="r-in"><span><span class="va">umberto7_csv_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"Beispiel_Auswertung"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">zipfile</span>, exdir <span class="op">=</span> <span class="va">umberto7_csv_dir</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">umberto7_rawdata</span> <span class="op">&lt;-</span> <span class="fu">kwb.umberto</span><span class="fu">::</span><span class="fu"><a href="import_rawdata.html">import_rawdata</a></span><span class="op">(</span>csv_dir <span class="op">=</span> <span class="va">umberto7_csv_dir</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing csv file 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpO4TXfe/Beispiel_Auswertung/Ref_High_C+N.csv'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing csv file 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc5dXXI/Beispiel_Auswertung/Ref_High_C+N.csv'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Using <span style="color: #0000BB;">"','"</span> as decimal and <span style="color: #0000BB;">"'.'"</span> as grouping mark. Use `read_delim()` for more control.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">19996</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">12</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span>
@@ -104,7 +110,7 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing csv file 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpO4TXfe/Beispiel_Auswertung/Ref_High_C+high N.csv'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing csv file 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc5dXXI/Beispiel_Auswertung/Ref_High_C+high N.csv'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Using <span style="color: #0000BB;">"','"</span> as decimal and <span style="color: #0000BB;">"'.'"</span> as grouping mark. Use `read_delim()` for more control.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">19996</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">12</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span>
@@ -114,7 +120,7 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing csv file 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpO4TXfe/Beispiel_Auswertung/Ref_Low_C+N.csv'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing csv file 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc5dXXI/Beispiel_Auswertung/Ref_Low_C+N.csv'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Using <span style="color: #0000BB;">"','"</span> as decimal and <span style="color: #0000BB;">"'.'"</span> as grouping mark. Use `read_delim()` for more control.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">19996</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">12</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span>
@@ -124,7 +130,7 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing csv file 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpO4TXfe/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Importing csv file 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc5dXXI/Beispiel_Auswertung/Ref_Low_C+high N.csv'</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Using <span style="color: #0000BB;">"','"</span> as decimal and <span style="color: #0000BB;">"'.'"</span> as grouping mark. Use `read_delim()` for more control.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">19996</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">12</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span>
