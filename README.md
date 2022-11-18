@@ -4,6 +4,7 @@
 [![Project Status](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/kwb.umberto)]()
 [![R-Universe_Status_Badge](https://kwb-r.r-universe.dev/badges/kwb.umberto)](https://kwb-r.r-universe.dev/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3604006.svg)](https://doi.org/10.5281/zenodo.3604006)
 
 # kwb.umberto
 
