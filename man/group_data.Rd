@@ -4,8 +4,12 @@
 \alias{group_data}
 \title{Group data}
 \usage{
-group_data(raw_data, grouping_paras = c("lci_method", "model", "process",
-  "unit"), grouping_function = "sum")
+group_data(
+  raw_data,
+  grouping_paras = c("lci_method", "model", "process", "unit"),
+  grouping_function = "sum",
+  summarise_col = "quantity"
+)
 }
 \arguments{
 \item{raw_data}{as retrieved by function import_rawdata()}
@@ -14,6 +18,9 @@ group_data(raw_data, grouping_paras = c("lci_method", "model", "process",
 (default: c("lci_method", "model", "process", "unit"))}
 
 \item{grouping_function}{R function used for grouping (default: "sum")}
+
+\item{summarise_col}{column name used for summarising (default: "quantity"), 
+i.e. for which the "grouping_function" should be applied}
 }
 \value{
 aggregated data according

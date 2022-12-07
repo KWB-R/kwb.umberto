@@ -3,7 +3,7 @@
 #' @param path  relative or full path to be used for exporting the results to 
 #' EXCEL (default: "results.xlsx")
 #' @importFrom openxlsx write.xlsx
-#' @return writes results in EXCEl file defined in "path", where each sheet 
+#' @return writes results in EXCEL file defined in "path", where each sheet 
 #' @export
 #' @examples 
 #' zipfile <- system.file("extdata/umberto-nxt_v7.1.0.13.503/Beispiel_Auswertung.zip", 

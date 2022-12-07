@@ -4,8 +4,12 @@
 \alias{plot_results}
 \title{Plot results}
 \usage{
-plot_results(grouped_data, x_col = "model", y_col = "quantity_sum",
-  fill_col = "process")
+plot_results(
+  grouped_data,
+  x_col = "model",
+  y_col = "quantity_sum",
+  fill_col = "process"
+)
 }
 \arguments{
 \item{grouped_data}{data.frame with grouped rawdata as retrieved by 
@@ -19,7 +23,7 @@ function group_data()}
 \item{fill_col}{column name to be used for filling (default: "process")}
 }
 \value{
-simple plots for all differn
+simple plots for all different groups
 }
 \description{
 Plot results

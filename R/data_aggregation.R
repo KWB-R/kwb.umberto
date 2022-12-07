@@ -4,9 +4,11 @@
 #' @param grouping_paras cleaned column names used for grouping. 
 #' (default: c("lci_method", "model", "process", "unit"))
 #' @param grouping_function R function used for grouping (default: "sum") 
-#' @importFrom magrittr "%>%" 
-#' @importFrom dplyr group_by_ summarise_
+#' @param summarise_col column name used for summarising (default: "quantity"), 
+#' i.e. for which the "grouping_function" should be applied
+#' @importFrom dplyr across group_by summarise_at rename_with
 #' @importFrom stats setNames
+#' @importFrom tidyselect all_of
 #' @return aggregated data according 
 #' @export
 #' @examples 
@@ -25,14 +27,20 @@
 #' head(umberto10_data_grouped)
 group_data <- function(raw_data,
                        grouping_paras = c("lci_method", "model", "process", "unit"),
-                       grouping_function = "sum") {
+                       grouping_function = "sum",
+                       summarise_col = "quantity") {
   
-  res <- raw_data %>% 
-    dplyr::group_by_(.dots = grouping_paras) %>%  
-    dplyr::summarise_(.dots=stats::setNames(sprintf("%s(quantity)", 
-                                                    grouping_function), 
-                                     sprintf("quantity_%s", grouping_function))) 
-  return(res)
+  summarise_col_fun <- function(summarise_col) {
+    sprintf("%s_%s", summarise_col, grouping_function)
+  }
+  
+  raw_data %>% 
+    dplyr::group_by(dplyr::across(tidyselect::all_of(grouping_paras))) %>% 
+    dplyr::rename_with(.fn = summarise_col_fun,  
+                       .cols = summarise_col) %>% 
+    dplyr::summarise_at(.vars = summarise_col_fun(summarise_col),
+                        .funs = grouping_function)
+  
 }
 
 
@@ -47,7 +55,7 @@ group_data <- function(raw_data,
 #' transforming the data from the "list" to the "wide" format with tidyr::spread() 
 #' (default: "quantity_sum")
 #' @importFrom dplyr select 
-#' @importFrom tidyr spread_
+#' @importFrom tidyr spread
 #' @return data.frame with the aggregated results for all different"lci_method"   
 #' @export
 #' @examples 
@@ -73,9 +81,10 @@ pivot_data <- function(rawdata_grouped,
                        value_col = "quantity_sum") {
   
   rawdata_grouped %>% 
-    dplyr::select_(.dots = setdiff(names(rawdata_grouped), cols_to_ignore)) %>% 
-    tidyr::spread_(key_col,
-                   value_col)
+    dplyr::select(tidyselect::all_of(setdiff(names(rawdata_grouped), 
+                                             cols_to_ignore))
+                  ) %>% 
+    tidyr::spread(key = key_col, value = value_col)
 }
 
 #' Create pivot list
