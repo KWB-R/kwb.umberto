@@ -1,6 +1,4 @@
-# [kwb.umberto 0.2.0](https://github.com/KWB-R/kwb.umberto/releases/tag/v0.2.0) <small>unreleased</small>
-
-* Add support for new Umberto version ([#11](https://github.com/KWB-R/kwb.umberto/issues/11))
+# [kwb.umberto 0.2.0](https://github.com/KWB-R/kwb.umberto/releases/tag/v0.2.0) <small>2022-12-07</small>
 
 * Harmonise with [kwb.pkgbuild](https://kwb-r.github.io/kwb.pkgbuild) ([#12](https://github.com/KWB-R/kwb.umberto/issues/12))
 
