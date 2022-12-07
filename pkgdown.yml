@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   tutorial_umberto07: tutorial_umberto07.html
   tutorial_umberto10: tutorial_umberto10.html
-last_built: 2022-12-07T12:08Z
+last_built: 2022-12-07T13:15Z
 urls:
   reference: https://kwb-r.github.io/kwb.umberto/reference
   article: https://kwb-r.github.io/kwb.umberto/articles
