@@ -20,6 +20,7 @@ Imports:
     ggforce,
     ggplot2,
     janitor,
+    kwb.utils,
     magrittr,
     openxlsx,
     readr,

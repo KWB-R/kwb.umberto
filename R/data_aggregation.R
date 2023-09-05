@@ -105,6 +105,7 @@ pivot_data <- function(
 #' @return a list of results, where each element contains the result table for 
 #' one lci_method
 #' @importFrom dplyr right_join arrange
+#' @importFrom kwb.utils selectColumns
 #' @export
 #' @examples 
 #' 
@@ -126,23 +127,29 @@ pivot_data <- function(
 #' umberto10_data_pivot_list <- kwb.umberto::create_pivot_list(umberto10_data_pivot)
 #' head(umberto10_data_pivot_list)
 #' 
-create_pivot_list <- function(pivot_data, arrange_cols = "process")
+create_pivot_list <- function(
+    pivot_data, 
+    arrange_cols = "process", 
+    method_col = "lci_method"
+)
 {
   myList <- list()
   
-  lci_methods <- unique(pivot_data$lci_method)
+  method_vector <- kwb.utils::selectColumns(pivot_data, method_col)
+  
+  lci_methods <- unique(method_vector)
   
   for (i in seq_along(lci_methods)) {
     
-    selected_lci_method <- unique(pivot_data$lci_method)[i]
+    selected_lci_method <- lci_methods[i]
     
     processes <- data.frame(
       lci_method = selected_lci_method,
-      process = unique(pivot_data$process),
+      process = unique(kwb.utils::selectColumns(pivot_data, "process")),
       stringsAsFactors = FALSE
     )
     
-    tmp_data <- pivot_data[pivot_data$lci_method ==  selected_lci_method,] %>% 
+    tmp_data <- pivot_data[method_vector == selected_lci_method, ] %>% 
       dplyr::right_join(processes) %>% 
       dplyr::arrange_(arrange_cols)
     
