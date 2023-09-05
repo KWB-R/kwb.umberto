@@ -159,7 +159,5 @@ create_pivot_list <- function(
     myList[[i]] <- tmp_data
   }
   
-  names(myList) <- sprintf("lci_method%d", seq_along(lci_methods))
-  
-  return(myList)
+  stats::setNames(myList, sprintf("%s%d", method_col, seq_along(lci_methods)))
 }
