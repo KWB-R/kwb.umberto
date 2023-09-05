@@ -144,10 +144,13 @@ create_pivot_list <- function(
     selected_lci_method <- lci_methods[i]
     
     processes <- data.frame(
-      lci_method = selected_lci_method,
+      METHOD = selected_lci_method,
       process = unique(kwb.utils::selectColumns(pivot_data, "process")),
       stringsAsFactors = FALSE
-    )
+    ) %>%
+      kwb.utils::renameColumns(list(
+        METHOD = method_col
+      ))
     
     tmp_data <- pivot_data[method_vector == selected_lci_method, ] %>% 
       dplyr::right_join(processes) %>% 
