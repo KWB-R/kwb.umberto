@@ -133,31 +133,31 @@ create_pivot_list <- function(
     method_col = "lci_method"
 )
 {
-  myList <- list()
-  
   method_vector <- kwb.utils::selectColumns(pivot_data, method_col)
   
-  lci_methods <- unique(method_vector)
+  methods <- unique(method_vector)
   
-  for (i in seq_along(lci_methods)) {
-    
-    selected_lci_method <- lci_methods[i]
-    
-    processes <- data.frame(
-      METHOD = selected_lci_method,
-      process = unique(kwb.utils::selectColumns(pivot_data, "process")),
-      stringsAsFactors = FALSE
-    ) %>%
-      kwb.utils::renameColumns(list(
-        METHOD = method_col
-      ))
-    
-    tmp_data <- pivot_data[method_vector == selected_lci_method, ] %>% 
-      dplyr::right_join(processes) %>% 
-      dplyr::arrange_(arrange_cols)
-    
-    myList[[i]] <- tmp_data
-  }
+  indices <- seq_along(methods)
   
-  stats::setNames(myList, sprintf("%s%d", method_col, seq_along(lci_methods)))
+  lapply(
+    X = indices, 
+    FUN = function(i) {
+      
+      selected_lci_method <- methods[i]
+      
+      processes <- data.frame(
+        METHOD = selected_lci_method,
+        process = unique(kwb.utils::selectColumns(pivot_data, "process")),
+        stringsAsFactors = FALSE
+      ) %>%
+        kwb.utils::renameColumns(list(
+          METHOD = method_col
+        ))
+      
+      pivot_data[method_vector == selected_lci_method, ] %>% 
+        dplyr::right_join(processes) %>% 
+        dplyr::arrange_(arrange_cols)
+    }
+  ) %>% 
+    stats::setNames(sprintf("%s%d", method_col, indices))
 }
