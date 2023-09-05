@@ -25,22 +25,29 @@
 #' umberto10_rawdata <- kwb.umberto::import_rawdata(csv_dir = umberto10_csv_dir)
 #' umberto10_data_grouped <- kwb.umberto::group_data(umberto10_rawdata)
 #' head(umberto10_data_grouped)
-group_data <- function(raw_data,
-                       grouping_paras = c("lci_method", "model", "process", "unit"),
-                       grouping_function = "sum",
-                       summarise_col = "quantity") {
-  
+group_data <- function(
+    raw_data,
+    grouping_paras = c("lci_method", "model", "process", "unit"),
+    grouping_function = "sum",
+    summarise_col = "quantity"
+)
+{
   summarise_col_fun <- function(summarise_col) {
     sprintf("%s_%s", summarise_col, grouping_function)
   }
   
   raw_data %>% 
-    dplyr::group_by(dplyr::across(tidyselect::all_of(grouping_paras))) %>% 
-    dplyr::rename_with(.fn = summarise_col_fun,  
-                       .cols = summarise_col) %>% 
-    dplyr::summarise_at(.vars = summarise_col_fun(summarise_col),
-                        .funs = grouping_function)
-  
+    dplyr::group_by(
+      dplyr::across(tidyselect::all_of(grouping_paras))
+    ) %>% 
+    dplyr::rename_with(
+      .fn = summarise_col_fun,  
+      .cols = summarise_col
+    ) %>% 
+    dplyr::summarise_at(
+      .vars = summarise_col_fun(summarise_col),
+      .funs = grouping_function
+    )
 }
 
 
@@ -75,15 +82,19 @@ group_data <- function(raw_data,
 #' umberto10_data_pivot <- kwb.umberto::pivot_data(umberto10_data_grouped)
 #' head(umberto10_data_pivot)
 #' 
-pivot_data <- function(rawdata_grouped, 
-                       cols_to_ignore = "unit",
-                       key_col = "model",
-                       value_col = "quantity_sum") {
-  
+pivot_data <- function(
+    rawdata_grouped, 
+    cols_to_ignore = "unit",
+    key_col = "model",
+    value_col = "quantity_sum"
+)
+{
   rawdata_grouped %>% 
-    dplyr::select(tidyselect::all_of(setdiff(names(rawdata_grouped), 
-                                             cols_to_ignore))
-                  ) %>% 
+    dplyr::select(
+      tidyselect::all_of(
+        setdiff(names(rawdata_grouped), cols_to_ignore)
+      )
+    ) %>% 
     tidyr::spread(key = key_col, value = value_col)
 }
 
@@ -115,19 +126,21 @@ pivot_data <- function(rawdata_grouped,
 #' umberto10_data_pivot_list <- kwb.umberto::create_pivot_list(umberto10_data_pivot)
 #' head(umberto10_data_pivot_list)
 #' 
-create_pivot_list <- function(pivot_data, 
-                              arrange_cols = "process") {
-  
+create_pivot_list <- function(pivot_data, arrange_cols = "process")
+{
   myList <- list()
+  
   lci_methods <- unique(pivot_data$lci_method)
+  
   for (i in seq_along(lci_methods)) {
     
     selected_lci_method <- unique(pivot_data$lci_method)[i]
     
-    processes <- data.frame(lci_method = selected_lci_method,
-                            process = unique(pivot_data$process),
-                            stringsAsFactors = FALSE)
-    
+    processes <- data.frame(
+      lci_method = selected_lci_method,
+      process = unique(pivot_data$process),
+      stringsAsFactors = FALSE
+    )
     
     tmp_data <- pivot_data[pivot_data$lci_method ==  selected_lci_method,] %>% 
       dplyr::right_join(processes) %>% 
@@ -135,6 +148,8 @@ create_pivot_list <- function(pivot_data,
     
     myList[[i]] <- tmp_data
   }
+  
   names(myList) <- sprintf("lci_method%d", seq_along(lci_methods))
+  
   return(myList)
 }
