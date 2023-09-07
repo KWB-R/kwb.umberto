@@ -20,6 +20,7 @@ Imports:
     ggforce,
     ggplot2,
     janitor,
+    jsonlite,
     kwb.utils,
     magrittr,
     openxlsx,
@@ -33,8 +34,10 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
+Remotes: 
+    github::kwb-r/kwb.utils
 ByteCompile: true
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Config/testthat/edition: 3

@@ -289,8 +289,10 @@ flatten <- function(x, depth = 0L, max_depth = 3L)
   
   # Loop through the other parts
   part_2 <- if (length(remaining)) {
+
+    elements <- names(remaining)
     
-    result <- lapply(names(remaining), function(element) {
+    result <- lapply(elements, function(element) {
       cat(kwb.utils::indent(element, depth), "\n")
       flatten(
         remaining[[element]],

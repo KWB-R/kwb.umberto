@@ -4,7 +4,11 @@
 \alias{create_pivot_list}
 \title{Create pivot list}
 \usage{
-create_pivot_list(pivot_data, arrange_cols = "process")
+create_pivot_list(
+  pivot_data,
+  arrange_cols = "process",
+  method_col = "lci_method"
+)
 }
 \arguments{
 \item{pivot_data}{privot data as retrieved from function pivot_data()}
