@@ -159,7 +159,7 @@ create_pivot_list <- function(
       
       pivot_data[method_vector == selected_lci_method, ] %>% 
         dplyr::right_join(processes) %>% 
-        dplyr::arrange_(arrange_cols)
+        dplyr::arrange(arrange_cols)
     }
   ) %>% 
     stats::setNames(sprintf("%s%d", method_col, indices))
