@@ -102,6 +102,9 @@ pivot_data <- function(
 #'
 #' @param pivot_data privot data as retrieved from function pivot_data()
 #' @param arrange_cols columns used for arranging the data (default: "process")
+#' @param method_col name of the column containing the method 
+#'   (default: "lci_method"). Depending on your Umberto version you may need to
+#'   set method_col to "lcia_method".
 #' @return a list of results, where each element contains the result table for 
 #' one lci_method
 #' @importFrom dplyr right_join arrange
