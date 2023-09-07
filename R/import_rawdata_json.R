@@ -2,13 +2,13 @@ if (FALSE)
 {
   json_dir = "~/../Downloads/S/support/fabian/R-Umberto/Umberto11"
 
-  result <- import_rawdata_json(json_dir)
-  
+  result <- kwb.umberto:::import_rawdata_json(json_dir, add_place = TRUE)
+  names(result)
   View(result)
 }
 
 # import_rawdata_json ----------------------------------------------------------
-import_rawdata_json <- function(json_dir)
+import_rawdata_json <- function(json_dir, old_format = TRUE, add_place = FALSE)
 {
   contents <- read_json_files(json_dir)
   
@@ -16,7 +16,38 @@ import_rawdata_json <- function(json_dir)
   
   data_frames <- lapply(result, merge_json_tables)
   
-  do.call(rbind, data_frames)
+  result <- kwb.utils::rbindAll(data_frames, nameColumn = "model")
+
+  if (!old_format) {
+    return(result)
+  }
+  
+  fetch <- kwb.utils::createAccessor(result)
+  
+  result <- data.frame(
+    project = "not-used",
+    model = fetch("model"),
+    net = "not-used",
+    timestamp = fetch("timestamp"),
+    product = "not-used",
+    product_name = fetch("ref_flow_exchange"),
+    product_arrow = fetch("product_arrow"),
+    product_flow_amount = fetch("product_amount"),
+    lcia_method = fetch("indicator_name"),
+    phase = "not-used",
+    process = fetch("process_name"),
+    material_type = fetch("entry_materialType"),
+    material = "not-used",
+    quantity = fetch("product_quantity"),
+    unit = fetch("product_unit"),
+    scenario = fetch("scenario_name")
+  )
+  
+  if (add_place) {
+    result <- cbind(result, place = fetch("place_name"))
+  }
+  
+  result
 }
 
 # read_json_files --------------------------------------------------------------
@@ -24,7 +55,10 @@ read_json_files <- function(json_dir)
 {
   json_files <- list_json_files_or_stop(json_dir)
   
-  lapply(json_files, jsonlite::read_json)
+  stats::setNames(
+    lapply(json_files, jsonlite::read_json),
+    basename(json_files) # %>% kwb.utils::removeExtension()
+  )
 }
 
 # list_json_files_or_stop ------------------------------------------------------
@@ -52,7 +86,7 @@ to_tables <- function(content)
   
   fetch <- kwb.utils::createAccessor(content)
   
-  list(
+  result <- list(
     products = fetch("products") %>%
       convert_and_bind(to_product) %>%
       prefix_columns("product_"),
@@ -75,6 +109,11 @@ to_tables <- function(content)
     evaluationMethods = fetch("evaluationMethods") %>%
       convert_and_bind(to_evaluationMethod) %>%
       prefix_columns("evaluationMethod_")
+  )
+  
+  structure(
+    result, 
+    timestamp = fetch("timestamp")
   )
 }
 

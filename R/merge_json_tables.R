@@ -55,6 +55,7 @@ merge_json_tables <- function(tables)
     , "entry_costItemGroup"
     , "entry_exchangeBoundary"
   )) %>%
+    cbind(timestamp = kwb.utils::getAttribute(tables, "timestamp")) %>%
     move_id_columns_right()
 }
 
