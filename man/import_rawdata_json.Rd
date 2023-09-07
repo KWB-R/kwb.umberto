@@ -13,8 +13,8 @@ will be read.}
 \item{old_format}{if TRUE (the default) the same columns are provided that
 are provided by \code{\link{import_rawdata}} that imports .csv files}
 
-\item{The}{old_format does not contain the "place". With add_place = TRUE
-the "place" is contained in the result even if old_format = TRUE.}
+\item{add_place}{With add_place = TRUE, the "place" is contained in the 
+result even if old_format = TRUE}
 }
 \value{
 data frame

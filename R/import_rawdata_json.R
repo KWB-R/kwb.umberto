@@ -15,8 +15,8 @@ if (FALSE)
 #'   will be read.
 #' @param old_format if TRUE (the default) the same columns are provided that
 #'   are provided by \code{\link{import_rawdata}} that imports .csv files
-#' @param The old_format does not contain the "place". With add_place = TRUE
-#'   the "place" is contained in the result even if old_format = TRUE.
+#' @param add_place With add_place = TRUE, the "place" is contained in the 
+#'   result even if old_format = TRUE
 #' @return data frame
 #' @export
 import_rawdata_json <- function(json_dir, old_format = TRUE, add_place = FALSE)
