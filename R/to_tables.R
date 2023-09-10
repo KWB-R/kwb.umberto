@@ -11,6 +11,8 @@ to_tables <- function(content)
       convert_and_bind(to_product) %>%
       prefix_columns("product_"),
     
+    #products2 = flatten(fetch("products")),
+    
     entries = fetch("entries") %>%
       convert_and_bind(to_entry) %>%
       kwb.utils::removeColumns("exchangeFullName") %>%
