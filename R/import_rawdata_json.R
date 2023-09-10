@@ -306,12 +306,6 @@ convert_and_bind <- function(x_list, converter)
     kwb.utils::safeRowBindAll()
 }
 
-# flatten_all ------------------------------------------------------------------
-flatten_all <- function(x)
-{
-  do.call(rbind, lapply(x, flatten))  
-}
-
 # flatten ----------------------------------------------------------------------
 flatten <- function(x, depth = 0L, max_depth = 3L)
 {
