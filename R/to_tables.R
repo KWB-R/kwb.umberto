@@ -64,29 +64,6 @@ to_product <- function(x)
   )
 }
 
-# get_flat_part ----------------------------------------------------------------
-get_flat_part <- function(x)
-{
-  check_for_list(x)
-  
-  is_flat <- lengths(x) == 1L & !sapply(x, is.list)
-  
-  if (!any(is_flat)) {
-    return(NULL)
-  }
-  
-  as.data.frame(x[is_flat])
-}
-
-# get_remaining ----------------------------------------------------------------
-get_remaining <- function(x, flat_part)
-{
-  check_for_list(x)
-  check_for_data_frame(flat_part)
-  
-  x[setdiff(names(x), names(flat_part))]
-}
-
 # to_lcia ----------------------------------------------------------------------
 to_lcia <- function(x)
 {
@@ -185,13 +162,6 @@ to_indicator <- function(x)
   flat %>%
     remove_uuid() %>%
     cbind(indicatorPath = paste0(path_parts[[1L]], "->", path_parts[[2L]]))
-}
-
-# convert_and_bind -------------------------------------------------------------
-convert_and_bind <- function(x_list, converter)
-{
-  lapply(x_list, converter) %>%
-    kwb.utils::safeRowBindAll()
 }
 
 # flatten_list_of_unnamed_elements ---------------------------------------------

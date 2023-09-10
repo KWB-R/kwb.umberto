@@ -1,7 +1,7 @@
-# check_for_list ---------------------------------------------------------------
-check_for_list <- function(x)
+# all_have_identical_names -----------------------------------------------------
+all_have_identical_names <- function(x)
 {
-  stopifnot(is.list(x))
+  suppressMessages(kwb.utils::allAreIdentical(lapply(x, names)))
 }
 
 # check_for_data_frame ---------------------------------------------------------
@@ -10,10 +10,40 @@ check_for_data_frame <- function(x)
   stopifnot(is.data.frame(x))
 }
 
-# all_have_identical_names -----------------------------------------------------
-all_have_identical_names <- function(x)
+# check_for_list ---------------------------------------------------------------
+check_for_list <- function(x)
 {
-  suppressMessages(kwb.utils::allAreIdentical(lapply(x, names)))
+  stopifnot(is.list(x))
+}
+
+# convert_and_bind -------------------------------------------------------------
+convert_and_bind <- function(x_list, converter)
+{
+  lapply(x_list, converter) %>%
+    kwb.utils::safeRowBindAll()
+}
+
+# get_flat_part ----------------------------------------------------------------
+get_flat_part <- function(x)
+{
+  check_for_list(x)
+  
+  is_flat <- lengths(x) == 1L & !sapply(x, is.list)
+  
+  if (!any(is_flat)) {
+    return(NULL)
+  }
+  
+  as.data.frame(x[is_flat])
+}
+
+# get_remaining ----------------------------------------------------------------
+get_remaining <- function(x, flat_part)
+{
+  check_for_list(x)
+  check_for_data_frame(flat_part)
+  
+  x[setdiff(names(x), names(flat_part))]
 }
 
 # prefix_columns ---------------------------------------------------------------
