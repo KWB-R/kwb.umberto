@@ -164,14 +164,3 @@ to_indicator <- function(x)
     cbind(indicatorPath = paste0(path_parts[[1L]], "->", path_parts[[2L]]))
 }
 
-# flatten_list_of_unnamed_elements ---------------------------------------------
-flatten_list_of_unnamed_elements <- function(x)
-{
-  stopifnot(!is.null(names(x)))
-  
-  # We expect all elements to be lists with identical names
-  stopifnot(all_have_identical_names(x))
-  
-  do.call(rbind, lapply(x, flatten))
-}
-
