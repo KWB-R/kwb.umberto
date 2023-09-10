@@ -3,7 +3,9 @@ if (FALSE)
   json_dir = "~/../Downloads/S/support/fabian/R-Umberto/Umberto11"
 
   result <- kwb.umberto:::import_rawdata_json(json_dir, add_place = TRUE)
+  
   names(result)
+  
   View(result)
 }
 

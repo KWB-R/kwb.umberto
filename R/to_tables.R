@@ -3,6 +3,12 @@ to_tables <- function(content)
 {
   #content <- contents[[1L]]
   
+  # Try this general function for the list-type elements
+  # kwb.umberto:::flatten(content$products)
+  # kwb.umberto:::flatten(content$entries)
+  # kwb.umberto:::flatten(content$lifeCycleStages)
+  # ...
+  
   fetch <- kwb.utils::createAccessor(content)
   
   result <- list(
@@ -10,8 +16,6 @@ to_tables <- function(content)
     products = fetch("products") %>%
       convert_and_bind(to_product) %>%
       prefix_columns("product_"),
-    
-    #products2 = flatten(fetch("products")),
     
     entries = fetch("entries") %>%
       convert_and_bind(to_entry) %>%
