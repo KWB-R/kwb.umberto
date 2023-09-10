@@ -6,25 +6,32 @@ to_tables <- function(content)
   fetch <- kwb.utils::createAccessor(content)
   
   result <- list(
+    
     products = fetch("products") %>%
       convert_and_bind(to_product) %>%
       prefix_columns("product_"),
+    
     entries = fetch("entries") %>%
       convert_and_bind(to_entry) %>%
       kwb.utils::removeColumns("exchangeFullName") %>%
       prefix_columns("entry_"),
+    
     processes = fetch("processes") %>%
       convert_and_bind(to_process) %>%
       prefix_columns("process_"),
+    
     places = fetch("places") %>%
       convert_and_bind(to_place) %>%
       prefix_columns("place_"),
+    
     indicators = fetch("indicators") %>%
       convert_and_bind(to_indicator) %>%
       prefix_columns("indicator_"),
+    
     scenarios = fetch("scenarios") %>%
       convert_and_bind(to_scenario) %>%
       prefix_columns("scenario_"),
+    
     evaluationMethods = fetch("evaluationMethods") %>%
       convert_and_bind(to_evaluationMethod) %>%
       prefix_columns("evaluationMethod_")
@@ -111,24 +118,28 @@ to_process <- function(x)
     remove_xid()
 }
 
-# remove_xid -------------------------------------------------------------------
-remove_xid <- function(df)
-{
-  kwb.utils::removeColumns(df, "X.id")
-}
-
-# remove_uuid ------------------------------------------------------------------
-remove_uuid <- function(df)
-{
-  kwb.utils::removeColumns(df, "uuid")
-}
-
 # to_place ---------------------------------------------------------------------
 to_place <- function(x)
 {
   x %>%
     get_flat_part() %>%
     remove_xid()
+}
+
+# to_indicator -----------------------------------------------------------------
+to_indicator <- function(x)
+{
+  #x <- contents[[1L]]$indicators[[1L]]
+  flat <- get_flat_part(x)
+  
+  path_parts <- get_remaining(x, flat) %>%
+    kwb.utils::selectElements("path")
+  
+  stopifnot(all(lengths(path_parts) == 1L))
+  
+  flat %>%
+    remove_uuid() %>%
+    cbind(indicatorPath = paste0(path_parts[[1L]], "->", path_parts[[2L]]))
 }
 
 # to_scenario ------------------------------------------------------------------
@@ -146,21 +157,5 @@ to_evaluationMethod <- function(x)
     get_flat_part() %>%
     remove_xid() %>%
     remove_uuid()
-}
-
-# to_indicator -----------------------------------------------------------------
-to_indicator <- function(x)
-{
-  #x <- contents[[1L]]$indicators[[1L]]
-  flat <- get_flat_part(x)
-  
-  path_parts <- get_remaining(x, flat) %>%
-    kwb.utils::selectElements("path")
-  
-  stopifnot(all(lengths(path_parts) == 1L))
-  
-  flat %>%
-    remove_uuid() %>%
-    cbind(indicatorPath = paste0(path_parts[[1L]], "->", path_parts[[2L]]))
 }
 
