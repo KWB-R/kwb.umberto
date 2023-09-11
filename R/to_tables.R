@@ -69,19 +69,25 @@ to_product <- function(x)
   
   #str(lcia_list)
   
-  #convert_and_bind(lcia_list, get_flat_part)
+  renaming <- list("entryId" = "lciaEntryId")
+  
+  lcia_old <- lcia_list %>%
+    convert_and_bind(to_lcia) %>%
+    kwb.utils::renameColumns(renaming)
   
   lcia <- lcia_list %>%
-    convert_and_bind(to_lcia) %>%
-    kwb.utils::renameColumns(list(
-      "entryId" = "lciaEntryId"
-    ))
+    flatten() %>%
+    prettify_column_side() %>%
+    kwb.utils::renameColumns(renaming)
   
-  cbind(
-    flat %>%
-      remove_uuid(), 
-    lcia
-  )
+  check_identity(lcia_old, lcia)
+  
+  result_old <- cbind(remove_uuid(flat), lcia)
+  
+  #result <- remove_uuid(flatten(x))
+  #check_identity(result_old, result)
+  
+  result_old
 }
 
 # to_lcia ----------------------------------------------------------------------
@@ -89,10 +95,16 @@ to_lcia <- function(x)
 {
   #x <- lcia_list[[1L]];str(x)
 
-  result <- flatten(x) %>%
-    kwb.utils::renameColumns(list(
-      inputs_outputs_internals = "side"
-    ))
+  flatten(x) %>%
+    prettify_column_side()
+}
+
+# prettify_column_side ---------------------------------------------------------
+prettify_column_side <- function(data)
+{
+  result <- kwb.utils::renameColumns(data, list(
+    inputs_outputs_internals = "side"
+  ))
   
   result$side <- gsub("s$", "", result$side)
   
