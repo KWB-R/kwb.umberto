@@ -64,11 +64,32 @@ flatten <- function(x, name = NULL, sep = "|")
   # Names of the other elements (that are lists)
   elements <- names(which(is_list))
   
-  # Loop through these elements, flatten and row-bind them
-  part_2 <- do.call(rbind, lapply(
-    elements, function(name) flatten(x[[name]], name)
-  ))
+  # Loop through these elements, flatten them 
+  part_2_tables <- elements %>%
+    lapply(function(name) flatten(x[[name]], name = name, sep = sep)) %>%
+    stats::setNames(elements)
   
+  n_tables <- length(part_2_tables)
+    
+  # and row-bind them
+  part_2 <- if (n_tables > 1L) {
+    
+    #do.call(rbind, part_2_tables)
+    
+    # Find a column name that does not yet exist
+    name_column <- kwb.utils::hsSafeName(
+      paste(elements, collapse = "_"),
+      names(part_2_tables[[1L]])
+    )
+    
+    kwb.utils::rbindAll(part_2_tables, name_column)
+    
+  } else if (n_tables == 1L) {
+    
+    part_2_tables[[1L]]
+    
+  } # else NULL
+
   if (is.null(part_2)) {
     return(part_1)
   }
