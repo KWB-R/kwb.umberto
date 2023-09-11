@@ -11,7 +11,7 @@ if (FALSE)
 }
 
 # flatten ----------------------------------------------------------------------
-flatten <- function(x, name = NULL)
+flatten <- function(x, name = NULL, sep = "|")
 {
   # x must be a list
   check_for_list(x)
@@ -41,19 +41,18 @@ flatten <- function(x, name = NULL)
     stopifnot(!is.null(name))
     
     # List elements are concatenated with a separator to one string value
-    result <- kwb.utils::noFactorDataFrame(do.call(paste, c(x, sep = "|")))
+    result <- kwb.utils::noFactorDataFrame(do.call(paste, c(x, sep = sep)))
     
     # Name the (one and only) column
     return(stats::setNames(result, name))
   }
 
-  # If the elements are not named, flatten and merge them 
+  # If the elements are not named, flatten and row-bind them 
   if (!is_named) {
     
     stopifnot(all(sapply(x, is.list)))
     stopifnot(all_have_identical_names(x))
-    
-    return(do.call(rbind, lapply(x, flatten)))
+    return(do.call(rbind, lapply(x, flatten, name = name, sep = sep)))
   }
 
   # Get the part that is already flat (get_flat_part(x))
