@@ -16,6 +16,17 @@ check_for_list <- function(x)
   stopifnot(is.list(x))
 }
 
+# check_identity ---------------------------------------------------------------
+check_identity <- function(x, y)
+{
+  is_identical <- identical(x, y)
+  
+  kwb.utils::printIf(!is_identical, x, caption = deparse(substitute(x)))
+  kwb.utils::printIf(!is_identical, y, caption = deparse(substitute(y)))
+  
+  stopifnot(is_identical)
+}
+
 # convert_and_bind -------------------------------------------------------------
 convert_and_bind <- function(x_list, converter)
 {
