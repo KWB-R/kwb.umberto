@@ -10,6 +10,12 @@ check_for_data_frame <- function(x)
   stopifnot(is.data.frame(x))
 }
 
+# check_for_exactly_one_row ----------------------------------------------------
+check_for_exactly_one_row <- function(date)
+{
+  stopifnot(nrow(date) == 1L)
+}
+
 # check_for_list ---------------------------------------------------------------
 check_for_list <- function(x)
 {

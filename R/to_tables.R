@@ -91,5 +91,10 @@ to_product <- function(x)
   
   lcia$side <- gsub("s$", "", lcia$side)
   
-  cbind(remove_uuid(flat), lcia)
+  part_1 <- remove_uuid(flat)
+  
+  # We expect part_1 to have one row
+  check_for_exactly_one_row(part_1)
+
+  cbind(part_1[rep.int(1L, nrow(lcia)), , drop = FALSE], lcia)
 }

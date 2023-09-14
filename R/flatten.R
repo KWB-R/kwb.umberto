@@ -94,5 +94,9 @@ flatten <- function(x, name = NULL, sep = "|")
     return(part_1)
   }
   
-  cbind(part_1, part_2)
+  # We expect part_1 to have one row
+  check_for_exactly_one_row(part_1)
+
+  # Consider that part_2 may have no rows!
+  cbind(part_1[rep.int(1L, nrow(part_2)), , drop = FALSE], part_2)
 }
