@@ -2,8 +2,16 @@ if (FALSE)
 {
   json_dir = "~/../Downloads/S/support/fabian/R-Umberto/Umberto11"
   
+  files <- dir(json_dir, "\\.json$", full.names = TRUE)
+  
   result <- kwb.umberto:::import_rawdata_json(json_dir, add_place = TRUE)
 
+  results <- lapply(files, FUN = function(file) {
+    kwb.umberto:::import_rawdata_json(files = file, add_place = TRUE)
+  })
+  
+  stopifnot(identical(do.call(rbind, results), result))
+  
   kwb.utils::assignPackageObjects("kwb.umberto")
   contents <- read_json_files(json_dir)
 }
@@ -18,11 +26,19 @@ if (FALSE)
 #'   are provided by \code{\link{import_rawdata}} that imports .csv files
 #' @param add_place With add_place = TRUE, the "place" is contained in the 
 #'   result even if old_format = TRUE
+#' @param files optional. If given and not \code{NULL} this is expected to be a
+#'   vector of character with the full paths to the \code{.json} files to be 
+#'   read.
 #' @return data frame
 #' @export
-import_rawdata_json <- function(json_dir, old_format = TRUE, add_place = FALSE)
+import_rawdata_json <- function(
+    json_dir, 
+    old_format = TRUE, 
+    add_place = FALSE, 
+    files = NULL
+)
 {
-  contents <- read_json_files(json_dir)
+  contents <- read_json_files(json_dir, files = files)
   
   result <- lapply(contents, to_tables)
   
@@ -63,14 +79,15 @@ import_rawdata_json <- function(json_dir, old_format = TRUE, add_place = FALSE)
 }
 
 # read_json_files --------------------------------------------------------------
-read_json_files <- function(json_dir)
+read_json_files <- function(json_dir, files = NULL)
 {
-  json_files <- list_json_files_or_stop(json_dir)
+  if (is.null(files)) {
+    files <- list_json_files_or_stop(json_dir)
+  }
   
-  stats::setNames(
-    lapply(json_files, jsonlite::read_json),
-    basename(json_files) # %>% kwb.utils::removeExtension()
-  )
+  files %>% 
+    lapply(jsonlite::read_json) %>%
+    stats::setNames(basename(files))
 }
 
 # list_json_files_or_stop ------------------------------------------------------
