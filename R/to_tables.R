@@ -37,7 +37,7 @@ to_tables <- function(content)
     prefix_columns("place_")
   
   indicators <- fetch("indicators") %>%
-    flatten(x, sep = "->") %>%
+    flatten(sep = "->") %>%
     remove_uuid() %>%
     kwb.utils::renameColumns(list(path = "indicatorPath")) %>%
     prefix_columns("indicator_")
