@@ -4,7 +4,12 @@
 \alias{import_rawdata_json}
 \title{Import Umberto results from .json files}
 \usage{
-import_rawdata_json(json_dir, old_format = TRUE, add_place = FALSE)
+import_rawdata_json(
+  json_dir,
+  old_format = TRUE,
+  add_place = FALSE,
+  files = NULL
+)
 }
 \arguments{
 \item{json_dir}{path to directory containing .json files. All .json files
@@ -15,6 +20,10 @@ are provided by \code{\link{import_rawdata}} that imports .csv files}
 
 \item{add_place}{With add_place = TRUE, the "place" is contained in the 
 result even if old_format = TRUE}
+
+\item{files}{optional. If given and not \code{NULL} this is expected to be a
+vector of character with the full paths to the \code{.json} files to be 
+read.}
 }
 \value{
 data frame
