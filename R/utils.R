@@ -90,3 +90,9 @@ replace_null_with_na <- function(x)
   
   x
 }
+
+# split_by_columns -------------------------------------------------------------
+split_by_columns <- function(data, columns)
+{
+  split(x = data, f = kwb.utils::selectColumns(data, columns))
+}
