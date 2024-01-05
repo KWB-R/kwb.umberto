@@ -1,10 +1,14 @@
 if (FALSE)
 {
-  json_dir = "~/../Downloads/S/support/fabian/R-Umberto/Umberto11"
+  json_dir <- "~/../Downloads/S/support/fabian/R-Umberto/Umberto11"
+  json_dir <- "~/../Downloads/S/support/lea/umberto"
   
   files <- dir(json_dir, "\\.json$", full.names = TRUE)
   
-  result <- kwb.umberto:::import_rawdata_json(json_dir, add_place = TRUE)
+  result_old_with_place <- kwb.umberto:::import_rawdata_json(
+    json_dir, 
+    add_place = TRUE
+  )
 
   results <- lapply(files, FUN = function(file) {
     kwb.umberto:::import_rawdata_json(files = file, add_place = TRUE)
@@ -13,7 +17,10 @@ if (FALSE)
   stopifnot(identical(do.call(rbind, results), result))
   
   kwb.utils::assignPackageObjects("kwb.umberto")
+  
   contents <- read_json_files(json_dir)
+  
+  #jsTree::jsTree
 }
 
 # import_rawdata_json ----------------------------------------------------------
