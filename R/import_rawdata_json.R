@@ -38,11 +38,12 @@ import_rawdata_json <- function(
     files = NULL
 )
 {
+  #kwb.utils::assignPackageObjects("kwb.umberto")
   contents <- read_json_files(json_dir, files = files)
   
-  result <- lapply(contents, to_tables)
+  result_tables <- lapply(contents, to_tables)
   
-  data_frames <- lapply(result, merge_json_tables)
+  data_frames <- lapply(result_tables, merge_json_tables)
   
   result <- kwb.utils::rbindAll(data_frames, nameColumn = "model")
 
