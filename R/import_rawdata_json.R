@@ -99,6 +99,7 @@ read_json_files <- function(json_dir, files = NULL)
 }
 
 # list_json_files_or_stop ------------------------------------------------------
+#' @importFrom kwb.utils stopFormatted
 list_json_files_or_stop <- function(json_dir)
 {
   json_files <- list.files(
