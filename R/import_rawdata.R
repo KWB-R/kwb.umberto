@@ -81,25 +81,29 @@ stop_on_differing_names <- function(x)
   stopifnot(is.list(x), all(sapply(x, is.data.frame)))
 
   # Return if there are not at least two data frames  
-  if (length(x) < 2) {
-    
+  if (length(x) < 2L) {
     return()
   }
   
   # Get the column names of the first data frame of the list
-  names_1 <- names(x[[1]])
+  columns_of_first <- names(x[[1L]])
+
+  # Names of data frames in list x
+  df_names <- names(x)
+  is_empty <- df_names == ""
+  df_names[is_empty] <- sprintf("<unnamed_%d>", which(is_empty))
   
   # Compare with the column names of the other data frames
-  for (i in seq_along(x)[-1]) {
+  for (i in seq_along(df_names)[-1L]) {
     
-    names_i <- names(x[[i]])
+    columns_of_current <- names(x[[i]])
     
-    if (! identical(names_1, names_i)) {
-      
+    if (!identical(columns_of_first, columns_of_current)) {
+      pasted <- function(x) paste(x, collapse = ", ")
       stop_(
-        "There are differing column names:\n", 
-        "  ", names(x)[1], ": ", paste(names_1, collapse = ", "),
-        "\n  ", names(x)[i], ": ", paste(names_i, collapse = ", ")
+        "There are differing column names:", 
+        "\n  ", df_names[1L], ": ", pasted(columns_of_first),
+        "\n  ", df_names[i], ": ", pasted(columns_of_current)
       )
     }
   }
