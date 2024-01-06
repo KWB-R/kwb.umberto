@@ -26,7 +26,8 @@ Imports:
     openxlsx,
     readr,
     tidyr,
-    tidyselect
+    tidyselect,
+    writexl
 Suggests: 
     covr,
     knitr,

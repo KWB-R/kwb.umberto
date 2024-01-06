@@ -1,4 +1,5 @@
 #' Write results to EXCEL
+#' 
 #' @param data_pivot_list a list as retrieved by function create_pivot_list()
 #' @param path  relative or full path to be used for exporting the results to 
 #' EXCEL (default: "results.xlsx")
@@ -27,10 +28,7 @@
 #' export_path <- file.path(getwd(), "umberto10_results.xlsx")
 #' print(sprintf("Exporting aggregated results to %s", export_path))
 #' write_xlsx(umberto10_data_pivot_list, path = export_path)
-write_xlsx <- function(data_pivot_list,
-                       path = "results.xlsx") {
-  
-  openxlsx::write.xlsx(data_pivot_list,
-                       file = path)
-  
+write_xlsx <- function(data_pivot_list, path = "results.xlsx")
+{
+  openxlsx::write.xlsx(data_pivot_list, file = path)
 }
