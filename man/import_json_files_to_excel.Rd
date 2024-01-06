@@ -7,6 +7,7 @@
 import_json_files_to_excel(
   json_dir,
   file = file.path(json_dir, "umberto-results.xlsx"),
+  overwrite = FALSE,
   open = TRUE
 )
 }
@@ -15,6 +16,9 @@ import_json_files_to_excel(
 
 \item{file}{path to Excel file to be created. Default: 
 \code{"umberto-results.xlsx"} within \code{json_dir}}
+
+\item{overwrite}{whether or not to overwrite the Excel \code{file} if it 
+exists. Default: \code{FALSE}.}
 
 \item{open}{logical indicating whether or not to open the created Excel file}
 }

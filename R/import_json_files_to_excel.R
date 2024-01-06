@@ -5,6 +5,8 @@
 #' @param json_dir path to directory containing .json files
 #' @param file path to Excel file to be created. Default: 
 #'   \code{"umberto-results.xlsx"} within \code{json_dir}
+#' @param overwrite whether or not to overwrite the Excel \code{file} if it 
+#'   exists. Default: \code{FALSE}.
 #' @param open logical indicating whether or not to open the created Excel file
 #' @return path to created Excel file
 #' @importFrom kwb.utils hsOpenWindowsExplorer substSpecialChars
@@ -13,6 +15,7 @@
 import_json_files_to_excel <- function(
     json_dir, 
     file = file.path(json_dir, "umberto-results.xlsx"),
+    overwrite = FALSE,
     open = TRUE
 )
 {
@@ -22,10 +25,29 @@ import_json_files_to_excel <- function(
     core_data_to_wide() %>%
     split_by_columns("indicator")
   
-  writexl::write_xlsx(sheets, file)
+  file_exists <- file.exists(file)
+  quoted_file <- dQuote(file, '"')
+  
+  if (file_exists && !overwrite) {
+    stop(
+      "The Excel file exists:\n  ",
+      quoted_file, 
+      "\nPlease choose another file name or set overwrite = TRUE.", 
+      call. = FALSE
+    )
+  }
+  
+  kwb.utils::catAndRun(
+    paste(
+      ifelse(file_exists, "Overwriting", "Writing"), 
+      "Excel file", 
+      quoted_file
+    ),
+    writexl::write_xlsx(sheets, file)
+  )
   
   if (open) {
-    try(kwb.utils::hsOpenWindowsExplorer(file))
+    try(kwb.utils::hsOpenWindowsExplorer(path.expand(file)))
   }
   
   file
