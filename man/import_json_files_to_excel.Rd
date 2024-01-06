@@ -4,13 +4,17 @@
 \alias{import_json_files_to_excel}
 \title{Import JSON files to Excel File}
 \usage{
-import_json_files_to_excel(json_dir, file = NULL, open = TRUE)
+import_json_files_to_excel(
+  json_dir,
+  file = file.path(json_dir, "umberto-results.xlsx"),
+  open = TRUE
+)
 }
 \arguments{
 \item{json_dir}{path to directory containing .json files}
 
 \item{file}{path to Excel file to be created. Default: 
-\code{"umberto-results_<json_dir_name>.xlsx"} in \code{tempdir()}}
+\code{"umberto-results.xlsx"} within \code{json_dir}}
 
 \item{open}{logical indicating whether or not to open the created Excel file}
 }

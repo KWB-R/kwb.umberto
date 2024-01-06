@@ -4,7 +4,7 @@
 #' 
 #' @param json_dir path to directory containing .json files
 #' @param file path to Excel file to be created. Default: 
-#'   \code{"umberto-results_<json_dir_name>.xlsx"} in \code{tempdir()}
+#'   \code{"umberto-results.xlsx"} within \code{json_dir}
 #' @param open logical indicating whether or not to open the created Excel file
 #' @return path to created Excel file
 #' @importFrom kwb.utils hsOpenWindowsExplorer substSpecialChars
@@ -12,7 +12,7 @@
 #' @export
 import_json_files_to_excel <- function(
     json_dir, 
-    file = NULL,
+    file = file.path(json_dir, "umberto-results.xlsx"),
     open = TRUE
 )
 {
@@ -21,14 +21,6 @@ import_json_files_to_excel <- function(
     get_core_data() %>%
     core_data_to_wide() %>%
     split_by_columns("indicator")
-  
-  if (is.null(file)) {
-    file <- file.path(tempdir(), paste0(
-      "umberto-import_", 
-      kwb.utils::substSpecialChars(basename(json_dir)),
-      ".xlsx"
-    ))
-  }
   
   writexl::write_xlsx(sheets, file)
   
