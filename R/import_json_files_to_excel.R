@@ -23,11 +23,11 @@ import_json_files_to_excel <- function(
     split_by_columns("indicator")
   
   if (is.null(file)) {
-    base_name <- kwb.utils::substSpecialChars(basename(json_dir))
-    file <- file.path(
-      tempdir(), 
-      sprintf("umberto-import_%s.xlsx", base_name)
-    )
+    file <- file.path(tempdir(), paste0(
+      "umberto-import_", 
+      kwb.utils::substSpecialChars(basename(json_dir)),
+      ".xlsx"
+    ))
   }
   
   writexl::write_xlsx(sheets, file)
