@@ -23,7 +23,8 @@ import_json_files_to_excel <- function(
     import_rawdata_json(add_place = TRUE, old_format = FALSE) %>%
     get_core_data() %>%
     core_data_to_wide() %>%
-    split_by_columns("indicator")
+    split_by_columns("indicator") %>%
+    stats::setNames(sprintf("m%02d", seq_along(.)))
   
   file_exists <- file.exists(file)
   quoted_file <- dQuote(file, '"')
