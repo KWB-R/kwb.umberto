@@ -8,7 +8,8 @@ import_json_files_to_excel(
   json_dir,
   file = file.path(json_dir, "umberto-results.xlsx"),
   overwrite = FALSE,
-  open = TRUE
+  open = TRUE,
+  expand = TRUE
 )
 }
 \arguments{
@@ -21,6 +22,10 @@ import_json_files_to_excel(
 exists. Default: \code{FALSE}.}
 
 \item{open}{logical indicating whether or not to open the created Excel file}
+
+\item{expand}{logical indicating whether or not to expand all sheets to the
+same number of rows (so that all possible combinations of values in the
+key columns are given)}
 }
 \value{
 path to created Excel file

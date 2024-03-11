@@ -45,7 +45,7 @@ import_rawdata_json <- function(
     files = NULL
 )
 {
-  #kwb.utils::assignPackageObjects("kwb.umberto")
+  #kwb.utils::assignPackageObjects("kwb.umberto");files = NULL
   contents <- read_json_files(json_dir, files = files)
   
   result_tables <- lapply(contents, to_tables)

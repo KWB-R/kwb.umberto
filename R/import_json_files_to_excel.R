@@ -8,6 +8,9 @@
 #' @param overwrite whether or not to overwrite the Excel \code{file} if it 
 #'   exists. Default: \code{FALSE}.
 #' @param open logical indicating whether or not to open the created Excel file
+#' @param expand logical indicating whether or not to expand all sheets to the
+#'   same number of rows (so that all possible combinations of values in the
+#'   key columns are given)
 #' @return path to created Excel file
 #' @importFrom kwb.utils hsOpenWindowsExplorer substSpecialChars
 #' @importFrom writexl write_xlsx
@@ -16,15 +19,23 @@ import_json_files_to_excel <- function(
     json_dir, 
     file = file.path(json_dir, "umberto-results.xlsx"),
     overwrite = FALSE,
-    open = TRUE
+    open = TRUE,
+    expand = TRUE
 )
 {
+  #kwb.utils::assignPackageObjects("kwb.umberto");`%>%` <- magrittr::`%>%`
+  
   sheets <- json_dir %>%
     import_rawdata_json(add_place = TRUE, old_format = FALSE) %>%
     get_core_data() %>%
     core_data_to_wide() %>%
-    split_by_columns("indicator") %>%
-    stats::setNames(sprintf("m%02d", seq_along(.)))
+    split_by_columns("indicator")
+  
+  names(sheets) <- sprintf("m%02d", seq_along(sheets))
+  
+  if (expand) {
+    sheets <- expand_to_all_key_combinations(sheets)
+  }
   
   file_exists <- file.exists(file)
   quoted_file <- dQuote(file, '"')
@@ -99,4 +110,19 @@ core_data_to_wide <- function(data)
       "place", 
       "exchange"
     ))
+}
+
+# expand_to_all_key_combinations -----------------------------------------------
+expand_to_all_key_combinations <- function(
+    sheets, 
+    keys = c("indicator", "process", "place", "exchange")
+)
+{
+  key_levels <- lapply(stats::setNames(nm = keys), function(key) {
+    unique(unlist(lapply(sheets, kwb.utils::selectColumns, key)))
+  })
+  
+  level_combis <- do.call(kwb.utils::expandGrid, key_levels)
+  
+  lapply(sheets, dplyr::right_join, level_combis, by = keys)
 }
