@@ -8,9 +8,11 @@
 #' @param overwrite whether or not to overwrite the Excel \code{file} if it 
 #'   exists. Default: \code{FALSE}.
 #' @param open logical indicating whether or not to open the created Excel file
-#' @param expand logical indicating whether or not to expand all sheets to the
-#'   same number of rows (so that all possible combinations of values in the
-#'   key columns are given)
+#' @param expand_keys If this argument is not \code{NULL} but a vector of (key)
+#'   column names, all sheets are expanded to the same number of rows. All
+#'   possible combinations of values in these key columns are then given in each
+#'   sheet even though there are no values for these key value combinations.
+#'   Default: \code{c("indicator", "process", "place", "exchange")}
 #' @return path to created Excel file
 #' @importFrom kwb.utils hsOpenWindowsExplorer substSpecialChars
 #' @importFrom writexl write_xlsx
@@ -20,7 +22,7 @@ import_json_files_to_excel <- function(
     file = file.path(json_dir, "umberto-results.xlsx"),
     overwrite = FALSE,
     open = TRUE,
-    expand = TRUE
+    expand_keys = c("process", "place", "exchange")
 )
 {
   #kwb.utils::assignPackageObjects("kwb.umberto");`%>%` <- magrittr::`%>%`
@@ -34,7 +36,7 @@ import_json_files_to_excel <- function(
   names(sheets) <- sprintf("m%02d", seq_along(sheets))
   
   if (expand) {
-    sheets <- expand_to_all_key_combinations(sheets)
+    sheets <- expand_to_all_key_combinations(sheets, keys = expand_keys)
   }
   
   file_exists <- file.exists(file)
@@ -113,16 +115,18 @@ core_data_to_wide <- function(data)
 }
 
 # expand_to_all_key_combinations -----------------------------------------------
-expand_to_all_key_combinations <- function(
-    sheets, 
-    keys = c("indicator", "process", "place", "exchange")
-)
+expand_to_all_key_combinations <- function(sheets, keys)
 {
-  key_levels <- lapply(stats::setNames(nm = keys), function(key) {
-    unique(unlist(lapply(sheets, kwb.utils::selectColumns, key)))
+  level_combis <- unique(do.call(rbind, lapply(
+    sheets, 
+    FUN = function(sheet) unique(kwb.utils::selectColumns(sheet, keys))
+  )))
+
+  lapply(names(sheets), function(indicator) {
+    dplyr::left_join(
+      x = data.frame(indicator = indicator, level_combis),
+      y = sheets[[indicator]], 
+      by = c("indicator", keys)
+    )
   })
-  
-  level_combis <- do.call(kwb.utils::expandGrid, key_levels)
-  
-  lapply(sheets, dplyr::right_join, level_combis, by = keys)
 }
