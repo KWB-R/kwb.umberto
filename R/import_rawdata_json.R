@@ -18,6 +18,8 @@ if (FALSE)
   
   kwb.utils::assignPackageObjects("kwb.umberto")
   
+  import_json_files_to_excel(json_dir)
+  
   contents <- read_json_files(json_dir)
   
   #jsTree::jsTree
