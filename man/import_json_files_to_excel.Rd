@@ -9,7 +9,7 @@ import_json_files_to_excel(
   file = file.path(json_dir, "umberto-results.xlsx"),
   overwrite = FALSE,
   open = TRUE,
-  expand = TRUE
+  expand_keys = c("process", "place", "exchange")
 )
 }
 \arguments{
@@ -23,9 +23,11 @@ exists. Default: \code{FALSE}.}
 
 \item{open}{logical indicating whether or not to open the created Excel file}
 
-\item{expand}{logical indicating whether or not to expand all sheets to the
-same number of rows (so that all possible combinations of values in the
-key columns are given)}
+\item{expand_keys}{If this argument is not \code{NULL} but a vector of (key)
+column names, all sheets are expanded to the same number of rows. All
+possible combinations of values in these key columns are then given in each
+sheet even though there are no values for these key value combinations.
+Default: \code{c("indicator", "process", "place", "exchange")}}
 }
 \value{
 path to created Excel file
