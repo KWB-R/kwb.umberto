@@ -2,7 +2,10 @@ if (FALSE)
 {
   json_dir <- "~/../Downloads/S/support/fabian/R-Umberto/Umberto11"
   json_dir <- "~/../Downloads/S/support/lea/umberto"
-  
+  json_dir <- "Y:/WWT_Department/Projects/Ultimate/Data_Work-packages/WP2-assessments/CS9_Kalundborg/LCAumberto11"
+
+  result_file <- kwb.umberto:::import_json_files_to_excel(json_dir, file = tempfile(fileext = ".xlsx"))
+    
   files <- dir(json_dir, "\\.json$", full.names = TRUE)
   
   result_old_with_place <- kwb.umberto:::import_rawdata_json(
@@ -14,13 +17,8 @@ if (FALSE)
     kwb.umberto:::import_rawdata_json(files = file, add_place = TRUE)
   })
   
-  stopifnot(identical(do.call(rbind, results), result))
   
-  kwb.utils::assignPackageObjects("kwb.umberto")
-  
-  import_json_files_to_excel(json_dir)
-  
-  contents <- read_json_files(json_dir)
+  contents <- kwb.umberto:::read_json_files(json_dir)
   
   #jsTree::jsTree
 }
