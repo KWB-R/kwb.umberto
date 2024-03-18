@@ -8,6 +8,11 @@
 #' @param overwrite whether or not to overwrite the Excel \code{file} if it 
 #'   exists. Default: \code{FALSE}.
 #' @param open logical indicating whether or not to open the created Excel file
+#' @param expand_keys If this argument is not \code{NULL} but a vector of (key)
+#'   column names, all sheets are expanded to the same number of rows. All
+#'   possible combinations of values in these key columns are then given in each
+#'   sheet even though there are no values for these key value combinations.
+#'   Default: \code{c("indicator", "process", "place", "exchange")}
 #' @return path to created Excel file
 #' @importFrom kwb.utils hsOpenWindowsExplorer substSpecialChars
 #' @importFrom writexl write_xlsx
@@ -16,15 +21,23 @@ import_json_files_to_excel <- function(
     json_dir, 
     file = file.path(json_dir, "umberto-results.xlsx"),
     overwrite = FALSE,
-    open = TRUE
+    open = TRUE,
+    expand_keys = c("process", "place", "exchange")
 )
 {
+  #kwb.utils::assignPackageObjects("kwb.umberto");`%>%` <- magrittr::`%>%`
+  
   sheets <- json_dir %>%
     import_rawdata_json(add_place = TRUE, old_format = FALSE) %>%
     get_core_data() %>%
     core_data_to_wide() %>%
-    split_by_columns("indicator") %>%
-    stats::setNames(sprintf("m%02d", seq_along(.)))
+    split_by_columns("indicator")
+  
+  names(sheets) <- sprintf("m%02d", seq_along(sheets))
+  
+  if (!is.null(expand_keys)) {
+    sheets <- expand_to_all_key_combinations(sheets, keys = expand_keys)
+  }
   
   file_exists <- file.exists(file)
   quoted_file <- dQuote(file, '"')
@@ -99,4 +112,23 @@ core_data_to_wide <- function(data)
       "place", 
       "exchange"
     ))
+}
+
+# expand_to_all_key_combinations -----------------------------------------------
+expand_to_all_key_combinations <- function(sheets, keys)
+{
+  level_combis <- unique(do.call(rbind, lapply(
+    sheets, 
+    FUN = function(sheet) unique(kwb.utils::selectColumns(sheet, keys))
+  )))
+
+  lapply(sheets, function(y) {
+    indicator <- unique(kwb.utils::selectColumns(y, "indicator"))
+    stopifnot(length(indicator) == 1L)
+    dplyr::left_join(
+      x = data.frame(indicator = indicator, level_combis),
+      y = y, 
+      by = c("indicator", keys)
+    )
+  })
 }
