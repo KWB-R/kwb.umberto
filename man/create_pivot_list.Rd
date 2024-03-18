@@ -4,12 +4,20 @@
 \alias{create_pivot_list}
 \title{Create pivot list}
 \usage{
-create_pivot_list(pivot_data, arrange_cols = "process")
+create_pivot_list(
+  pivot_data,
+  arrange_cols = "process",
+  method_col = "lci_method"
+)
 }
 \arguments{
 \item{pivot_data}{privot data as retrieved from function pivot_data()}
 
 \item{arrange_cols}{columns used for arranging the data (default: "process")}
+
+\item{method_col}{name of the column containing the method 
+(default: "lci_method"). Depending on your Umberto version you may need to
+set method_col to "lcia_method".}
 }
 \value{
 a list of results, where each element contains the result table for 

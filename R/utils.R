@@ -1,0 +1,98 @@
+# all_have_identical_names -----------------------------------------------------
+all_have_identical_names <- function(x)
+{
+  suppressMessages(kwb.utils::allAreIdentical(lapply(x, names)))
+}
+
+# check_for_data_frame ---------------------------------------------------------
+check_for_data_frame <- function(x)
+{
+  stopifnot(is.data.frame(x))
+}
+
+# check_for_exactly_one_row ----------------------------------------------------
+check_for_exactly_one_row <- function(date)
+{
+  stopifnot(nrow(date) == 1L)
+}
+
+# check_for_list ---------------------------------------------------------------
+check_for_list <- function(x)
+{
+  stopifnot(is.list(x))
+}
+
+# check_identity ---------------------------------------------------------------
+check_identity <- function(x, y)
+{
+  is_identical <- identical(x, y)
+  
+  kwb.utils::printIf(!is_identical, x, caption = deparse(substitute(x)))
+  kwb.utils::printIf(!is_identical, y, caption = deparse(substitute(y)))
+  
+  stopifnot(is_identical)
+}
+
+# convert_and_bind -------------------------------------------------------------
+convert_and_bind <- function(x_list, converter)
+{
+  lapply(x_list, converter) %>%
+    kwb.utils::safeRowBindAll()
+}
+
+# get_flat_part ----------------------------------------------------------------
+get_flat_part <- function(x)
+{
+  check_for_list(x)
+  
+  is_flat <- lengths(x) == 1L & !sapply(x, is.list)
+  
+  if (!any(is_flat)) {
+    return(NULL)
+  }
+  
+  as.data.frame(x[is_flat])
+}
+
+# get_remaining ----------------------------------------------------------------
+get_remaining <- function(x, flat_part)
+{
+  check_for_list(x)
+  check_for_data_frame(flat_part)
+  
+  x[setdiff(names(x), names(flat_part))]
+}
+
+# prefix_columns ---------------------------------------------------------------
+prefix_columns <- function(df, prefix = deparse(substitute(df)))
+{
+  check_for_data_frame(df)
+  
+  stats::setNames(df, paste0(prefix, names(df)))
+}
+
+# remove_zero_length_entries ---------------------------------------------------
+remove_zero_length_entries <- function(x)
+{
+  check_for_list(x)
+  
+  x[lengths(x) > 0L]
+}
+
+# replace_null_with_na ---------------------------------------------------------
+replace_null_with_na <- function(x)
+{
+  stopifnot(is.list(x))
+  
+  is_null <- sapply(x, is.null)
+  
+  x[is_null] <- as.list(rep(NA, sum(is_null)))
+  
+  x
+}
+
+# split_by_columns -------------------------------------------------------------
+split_by_columns <- function(data, columns)
+{
+  split(x = data, f = kwb.utils::selectColumns(data, columns))
+}
