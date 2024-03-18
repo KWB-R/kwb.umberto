@@ -1,5 +1,7 @@
 if (FALSE)
 {
+  #remotes::install_github("kwb-r/kwb.umberto@expand")
+  
   json_dir <- "~/../Downloads/S/support/fabian/R-Umberto/Umberto11"
   json_dir <- "~/../Downloads/S/support/lea/umberto"
   json_dir <- "Y:/WWT_Department/Projects/Ultimate/Data_Work-packages/WP2-assessments/CS9_Kalundborg/LCAumberto11"
@@ -16,7 +18,6 @@ if (FALSE)
   results <- lapply(files, FUN = function(file) {
     kwb.umberto:::import_rawdata_json(files = file, add_place = TRUE)
   })
-  
   
   contents <- kwb.umberto:::read_json_files(json_dir)
   
