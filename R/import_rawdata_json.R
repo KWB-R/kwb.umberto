@@ -1,6 +1,6 @@
 if (FALSE)
 {
-  #remotes::install_github("kwb-r/kwb.umberto@expand")
+  #remotes::install_github("kwb-r/kwb.umberto@dev")
   
   json_dir <- "~/../Downloads/S/support/fabian/R-Umberto/Umberto11"
   json_dir <- "~/../Downloads/S/support/lea/umberto"
