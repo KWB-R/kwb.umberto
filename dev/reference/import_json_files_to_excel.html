@@ -62,7 +62,8 @@
 <span>  <span class="va">json_dir</span>,</span>
 <span>  file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">json_dir</span>, <span class="st">"umberto-results.xlsx"</span><span class="op">)</span>,</span>
 <span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  open <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  open <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  expand_keys <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"process"</span>, <span class="st">"place"</span>, <span class="st">"exchange"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -84,6 +85,14 @@ exists. Default: <code>FALSE</code>.</p></dd>
 
 <dt>open</dt>
 <dd><p>logical indicating whether or not to open the created Excel file</p></dd>
+
+
+<dt>expand_keys</dt>
+<dd><p>If this argument is not <code>NULL</code> but a vector of (key)
+column names, all sheets are expanded to the same number of rows. All
+possible combinations of values in these key columns are then given in each
+sheet even though there are no values for these key value combinations.
+Default: <code>c("indicator", "process", "place", "exchange")</code></p></dd>
 
 </dl></div>
     <div class="section level2">
